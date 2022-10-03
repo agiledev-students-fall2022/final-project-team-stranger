@@ -20,13 +20,13 @@ Several sets of instructions are included in this repository. They should each b
 
 1. See the [Deployment instructions](./instructions-4-deployment.md) for the requirements of deploying an app.
 
-## Product Vision Statement 
+## Product Vision Statement
 
-Place statement here. 
+Place statement here.
 
-## Team 
+## Team
 
-* Rashed Rifat 
+* Rashed Rifat
   * [Github](https://github.com/RashedRifat)
   * [LinkedIn](https://www.linkedin.com/in/rashed-rifat/)
 * Richard Yang
@@ -35,27 +35,40 @@ Place statement here.
 * Placeholder
 * Placeholder
 
-## History 
+## History
 
-Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document. 
+Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
 
-## Project Build and Run Instructions 
+## Project Build and Run Instructions
 
-Place instructions here. 
+This section will be completed as we build out the front-end and backend. 
+
+* Running the Backend: 
+* Running the Frontend: 
 
 ## Roles
+
 ### Sprint 0
+
 #### Product Owner
-* Lawrence 
+
+* Lawrence
+
 #### Scrum Master
+
 * Rashed
+
 #### Developers
+
 * Lawrence
 * Rashed
 * Richard
 * Harry
 
 ### Sprint 1
+
 ### Sprint 2
+
 ### Sprint 3
+
 ### Sprint 4
