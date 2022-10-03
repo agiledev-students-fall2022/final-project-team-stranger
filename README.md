@@ -29,7 +29,9 @@ Place statement here.
 * Rashed Rifat 
   * [Github](https://github.com/RashedRifat)
   * [LinkedIn](https://www.linkedin.com/in/rashed-rifat/)
-* Placeholder
+* Richard Yang
+  * [Github](https://github.com/RichardYCX)
+  * [LinkedIn](https://www.linkedin.com/in/richardyang98/)
 * Placeholder
 * Placeholder
 
@@ -41,3 +43,19 @@ Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
 
 Place instructions here. 
 
+## Roles
+### Sprint 0
+#### Product Owner
+* Lawrence 
+#### Scrum Master
+* Rashed
+#### Developers
+* Lawrence
+* Rashed
+* Richard
+* Harry
+
+### Sprint 1
+### Sprint 2
+### Sprint 3
+### Sprint 4
