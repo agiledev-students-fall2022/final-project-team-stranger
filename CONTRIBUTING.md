@@ -1,4 +1,12 @@
-# Contributing
+# Project History and Contributing
+
+## History
+
+This project was inspired by the game Kind Words, in which 'players' can write nice letters to real people. The concept deeply impressed our team. As such, we plan to build a mobile/web application that collects and shares kind words. A user can receive and share one message every day. The message can be a small paragraph, a quote, a simple line, or even a single word.
+
+Please note that this project was developed as a part of the NYU Agile Development and Dev Ops Course, during the Fall 2022 Semester.
+
+## Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue,
 email, or any other method with the owners of this repository before making a change.
