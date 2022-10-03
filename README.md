@@ -22,6 +22,7 @@ Several sets of instructions are included in this repository. They should each b
 
 ## Product Vision Statement
 
+<<<<<<< HEAD
 1.  **Stay Anonymous, Stay Kind.**
 
     Users are always anonymous on our platform. No pressure, no blush.
@@ -52,3 +53,58 @@ Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
 ## Project Build and Run Instructions
 
 Place instructions here.
+=======
+Place statement here.
+
+## Team
+
+* Rashed Rifat
+  * [Github](https://github.com/RashedRifat)
+  * [LinkedIn](https://www.linkedin.com/in/rashed-rifat/)
+* Richard Yang
+  * [Github](https://github.com/RichardYCX)
+  * [LinkedIn](https://www.linkedin.com/in/richardyang98/)
+* Placeholder
+* Youyu Zhu
+  * [Github](https://github.com/yz6790)
+  * [Linkedin](https://www.linkedin.com/in/youyu-zhu-5b6387222/)
+
+## History
+10/3 Created the template for the project. Assigned team roles to all of our members.
+
+Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
+
+## Project Build and Run Instructions
+
+This section will be completed as we build out the front-end and backend. 
+
+* Running the Backend: 
+* Running the Frontend: 
+
+## Roles
+
+### Sprint 0
+
+#### Product Owner
+
+* Lawrence
+
+#### Scrum Master
+
+* Rashed
+
+#### Developers
+
+* Lawrence
+* Rashed
+* Richard
+* Harry
+
+### Sprint 1
+
+### Sprint 2
+
+### Sprint 3
+
+### Sprint 4
+>>>>>>> 210b1748fd9f0ac35e5e895e46ab34500e8c037d
