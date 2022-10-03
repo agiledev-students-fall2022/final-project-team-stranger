@@ -20,24 +20,35 @@ Several sets of instructions are included in this repository. They should each b
 
 1. See the [Deployment instructions](./instructions-4-deployment.md) for the requirements of deploying an app.
 
-## Product Vision Statement 
+## Product Vision Statement
 
-Place statement here. 
+1.  **Stay Anonymous, Stay Kind.**
 
-## Team 
+    Users are always anonymous on our platform. No pressure, no blush.
 
-* Rashed Rifat 
-  * [Github](https://github.com/RashedRifat)
-  * [LinkedIn](https://www.linkedin.com/in/rashed-rifat/)
-* Placeholder
-* Placeholder
-* Placeholder
+2.  **Building a mental bridge connecting strangers.**
 
-## History 
+    Users might be strangers in real life, but are connected with each other and support one another here.
 
-Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document. 
+3.  **We build what we build.**
 
-## Project Build and Run Instructions 
+    Aiming at building a compact app avoiding all kinds of trouble and mess.
 
-Place instructions here. 
+## Team
 
+- Rashed Rifat
+  - [Github](https://github.com/RashedRifat)
+  - [LinkedIn](https://www.linkedin.com/in/rashed-rifat/)
+- Placeholder
+- Tianhao Gu
+  - [Github](https://github.com/L-Gu7)
+  - [LinkedIn](https://www.linkedin.com/in/tianhao-gu-930521223/)
+- Placeholder
+
+## History
+
+Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
+
+## Project Build and Run Instructions
+
+Place instructions here.
