@@ -33,9 +33,12 @@ Place statement here.
   * [Github](https://github.com/RichardYCX)
   * [LinkedIn](https://www.linkedin.com/in/richardyang98/)
 * Placeholder
-* Placeholder
+* Youyu Zhu
+  * [Github](https://github.com/yz6790)
+  * [Linkedin](https://www.linkedin.com/in/youyu-zhu-5b6387222/)
 
 ## History
+10/3 Created the template for the project. Assigned team roles to all of our members.
 
 Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
 
