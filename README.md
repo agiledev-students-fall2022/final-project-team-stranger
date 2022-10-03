@@ -1,4 +1,5 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=8731463&assignment_repo_type=AssignmentRepo)
+
 # Project Repository
 
 This repository will be used for team projects.
@@ -18,3 +19,25 @@ Several sets of instructions are included in this repository. They should each b
 1. See the [Database Integration instructions](./instructions-3-database.md) for the requirements of integrating a database into the back-end.
 
 1. See the [Deployment instructions](./instructions-4-deployment.md) for the requirements of deploying an app.
+
+## Product Vision Statement 
+
+Place statement here. 
+
+## Team 
+
+* Rashed Rifat 
+  * [Github](https://github.com/RashedRifat)
+  * [LinkedIn](https://www.linkedin.com/in/rashed-rifat/)
+* Placeholder
+* Placeholder
+* Placeholder
+
+## History 
+
+Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document. 
+
+## Project Build and Run Instructions 
+
+Place instructions here. 
+
