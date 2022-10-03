@@ -8,8 +8,10 @@ Please note that this project was developed as a part of the NYU Agile Developme
 
 ## Contributing
 
-When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change.
+When contributing to this repository, please first discuss the change you wish to make via issue, or any other method with the owners of this repository before making a change.
+
+Once ready to start working on the changes, please clone this repository via VS Code (for first time contributors). 
+Pull changes made by other developers. Create a new branch for each issue. 
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
 
