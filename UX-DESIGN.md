@@ -6,40 +6,43 @@
 
 ## Wireframes
 
-<figure>
-    <img src="./ux-design/wireframes/Sign-In-Page.png" alt="drawing" width="50%"/>
-    <figcaption> Sign In Page
-</figure>
+* Sign In Page
+
+<img src="./ux-design/wireframes/Sign-In-Page.png" alt="drawing" width="33%"/> 
+
 <br>
-<figure>
-    <img src="./ux-design/wireframes/Home-Page.png" alt="drawing" width="50%"/>
-    <figcaption> Home Page
-</figure>
+
+* Home Page
+
+<img src="./ux-design/wireframes/Home-Page.png" alt="drawing" width="33%"/> 
+
 <br>
-<figure>
-    <img src="./ux-design/wireframes/New-Message-Page.png" alt="drawing" width="50%"/>
-    <figcaption> New Message Page
-</figure>
+
+* New Message Page
+
+<img src="./ux-design/wireframes/New-Message-Page.png" alt="drawing" width="33%"/> 
+
 <br>
-<figure>
-    <img src="./ux-design/wireframes/History.png" alt="drawing" width="50%"/>
-    <figcaption> Message History
-</figure>
+
+* Message History
+ 
+<img src="./ux-design/wireframes/History.png" alt="drawing" width="33%"/>
+
 <br>
-<figure>
-    <img src="./ux-design/wireframes/Stats.png" alt="drawing" width="50%"/>
-    <figcaption> Stats
-</figure>
+
+* Stats
+<img src="./ux-design/wireframes/Stats.png" alt="drawing" width="33%"/>
+
 <br>
-<figure>
-    <img src="./ux-design/wireframes/Profile.png" alt="drawing" width="50%"/>
-    <figcaption> Profile
-</figure>
+
+* Profile
+<img src="./ux-design/wireframes/Profile.png" alt="drawing" width="33%"/> 
+
 <br>
-<figure>
-    <img src="./ux-design/wireframes/Settings-Page.png" alt="drawing" width="50%"/>
-    <figcaption> Settings Page
-</figure>
+
+* Settings Page
+
+<img src="./ux-design/wireframes/Settings-Page.png" alt="drawing" width="33%"/>
 
 <br>
 
