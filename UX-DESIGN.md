@@ -1,4 +1,6 @@
 # User Experience Design
+## Prototype
+[Prototype Link](https://invis.io/P2131ILEC7DU)
 
 ## App Map
 
@@ -45,6 +47,3 @@
 <img src="./ux-design/wireframes/Settings-Page.png" alt="drawing" width="33%"/>
 
 <br>
-
-- [app map & wireframe instructions](instructions-0a-app-map-wireframes.md).
-- [prototype instructions](instructions-0b-prototyping.md)
