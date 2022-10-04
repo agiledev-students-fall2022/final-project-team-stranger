@@ -1,1 +1,0 @@
-[![Prototype](prototype.png)](https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F4MPRpd1qAI6eM8vPtxjrIk%2FStranger-Wireframe-and-Protoype%3Fnode-id%3D41%253A82%26scaling%3Dscale-down%26page-id%3D0%253A1%26starting-point-node-id%3D75%253A47)
