@@ -10,11 +10,15 @@ We plan to build a mobile/web application that collects and shares kind words. A
 
 2. **Building a mental bridge connecting strangers.**
 
-    Users might be strangers in real life, but are connected with each other and support one another here.
+    Users might be strangers in real life, but are connected with each other and support one another here through sending kind words.
 
 3. **We build what we build.**
 
     Aiming at building a compact app avoiding all kinds of trouble and mess.
+
+4. **Warm Others, Warm yourself.**
+
+    Users will see how influential their words become. Achieve happiness and encouragements through cheering others up.
 
 ## Team
 
@@ -50,6 +54,7 @@ This section will be completed as we build out the front-end and backend.
 #### Product Owner
 
 - Lawrence
+- Harry
 
 #### Scrum Master
 

@@ -2,9 +2,8 @@
 
 ## History
 
-This project was inspired by the game Kind Words, in which 'players' can write nice letters to real people. The concept deeply impressed our team. As such, we plan to build a mobile/web application that collects and shares kind words. A user can receive and share one message every day. The message can be a small paragraph, a quote, a simple line, or even a single word.
-
-Please note that this project was developed as a part of the NYU Agile Development and Dev Ops Course, during the Fall 2022 Semester.
+This project was inspired by the game [Kind Words](https://store.steampowered.com/app/1070710/Kind_Words_lo_fi_chill_beats_to_write_to/),
+in which 'players' can write nice letters to real people. The concept deeply impressed our team. We wish people living in this busy world could feel and share warmth with others, and sometimes all one needs is a few kind words. So we come up with this project. Every user can receive and send 1-3 messages everyday. The message can be a small paragraph, a quote, a simple line, or even a single word.
 
 ## Contributing
 
