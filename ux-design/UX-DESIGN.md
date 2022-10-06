@@ -59,3 +59,9 @@ We note the different pages of our wireframe below.
 <img src="./wireframes/Settings-Page.png" alt="Settings" width="33%"/>
 
 <br>
+
+- Sign-Up Page
+
+<img src="./wireframes/Sign-up%20Page.png" alt="Settings" width="33%"/>
+
+<br>
