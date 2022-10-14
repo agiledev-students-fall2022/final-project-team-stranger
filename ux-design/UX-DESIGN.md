@@ -1,5 +1,15 @@
 # User Experience Design
 
+* Components:
+* Header, Footer
+* Sidebar - profile
+* Sign in, Sign up 
+* Message, Message-list/history
+* Home, Timer, share
+* Send Message
+* Setting
+
+
 ## Prototype
 
 Please find our completed prototype at the following [Invision link.](https://invis.io/P2131ILEC7DU)
