@@ -1,11 +1,9 @@
-import './Header.css'
+import "./Header.css";
 // import logo from './logo.svg'
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-const Header = props => {
-    return (
-        <p>Placeholder Header Component!</p>
-    )
-}
+const Header = (props) => {
+  return <p>Placeholder Header Component!</p>;
+};
 
-export default Header; 
+export default Header;

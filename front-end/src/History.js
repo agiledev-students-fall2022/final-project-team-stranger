@@ -1,10 +1,8 @@
-import './History.css'
-import { Link } from 'react-router-dom'
+import "./History.css";
+import { Link } from "react-router-dom";
 
-const History = props => {
-    return (
-        <p>Placeholder Message History Page!</p>
-    )
-}
+const History = (props) => {
+  return <p>Placeholder Message History Page!</p>;
+};
 
-export default History; 
+export default History;

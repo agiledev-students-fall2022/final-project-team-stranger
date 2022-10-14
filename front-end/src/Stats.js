@@ -1,10 +1,8 @@
-import './Stats.css'
-import { Link } from 'react-router-dom'
+import "./Stats.css";
+import { Link } from "react-router-dom";
 
-const Stats = props => {
-    return (
-        <p>Placeholder Stats Page!</p>
-    )
-}
+const Stats = (props) => {
+  return <p>Placeholder Stats Page!</p>;
+};
 
-export default Stats; 
+export default Stats;

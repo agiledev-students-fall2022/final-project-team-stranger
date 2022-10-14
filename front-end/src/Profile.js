@@ -1,10 +1,8 @@
-import './Profile.css'
-import { Link } from 'react-router-dom'
+import "./Profile.css";
+import { Link } from "react-router-dom";
 
-const Profile = props => {
-    return (
-        <p>Placeholder Profile Page!</p>
-    )
-}
+const Profile = (props) => {
+  return <p>Placeholder Profile Page!</p>;
+};
 
-export default Profile; 
+export default Profile;
