@@ -68,6 +68,20 @@ This section will be completed as we build out the front-end and backend.
 - Harry
 
 ### Sprint 1
+#### Product Owner
+
+- Youyu
+
+#### Scrum Master
+
+- Richard
+
+#### Developers
+
+- Lawrence
+- Rashed
+- Richard
+- Harry
 
 ### Sprint 2
 
