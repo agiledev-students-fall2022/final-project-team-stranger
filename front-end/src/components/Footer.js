@@ -8,7 +8,7 @@ const Footer = props => {
   return <Box>
     <footer className="strangerFooter">
       <Link to="/" className="footerHomeLink">Home</Link> 
-      &copy;HelloStranger, 20222
+      &copy;HelloStranger, 2022
     </footer>
   </Box>
 };
