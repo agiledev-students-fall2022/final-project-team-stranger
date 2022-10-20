@@ -1,9 +1,9 @@
 import "./Header.css";
-// import { Link } from "react-router-dom";
 import {
-  AppBar, Typography, Toolbar, Button, Link, Box
+  AppBar, Toolbar, Button, Box
 } from "@mui/material"
-import MenuIcon from "@mui/icons-material/Menu";
+
+// Reference Link: https://mui.com/material-ui/react-app-bar/#main-content
 
 const pages = {
   "Home" : "/", 
