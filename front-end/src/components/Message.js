@@ -6,7 +6,7 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import SendIcon from "@mui/icons-material/Send";
 
 const Message = (props) => {
-  return <></>;
+  return <p>Placeholder Message Component!</p>;
 };
 
 export default Message;
