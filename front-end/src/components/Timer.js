@@ -1,6 +1,6 @@
-import "./Footer.css";
+import "./Timer.css";
 import Countdown from "react-countdown-simple";
-import { Paper, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 const Timer = (props) => {
   //next midnight

@@ -10,7 +10,7 @@ const Message = (props) => {
         borderRadius: 2,
       }}
     >
-      <Typography>{props.message}</Typography>
+      <Typography className="item">{props.message}</Typography>
     </Paper>
   );
 };

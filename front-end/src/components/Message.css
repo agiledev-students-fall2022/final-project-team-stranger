@@ -1,10 +1,15 @@
 .message {
   display: "flex";
   max-width: 75%;
-  margin: 10px auto;
+  margin: 15px auto;
   position: relative;
   height: 250px;
   overflow: hidden;
   padding: 20px;
   text-align: center;
+}
+
+.item {
+  /* need to position the text in the middle? */
+  margin: 40px auto !important;
 }
