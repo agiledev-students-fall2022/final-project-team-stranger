@@ -7,8 +7,16 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const MessageItem = (props) => {
-  let {text, score, time} = props
-
+  let {text, score, time, page} = props
+  let s;
+  if(page=="stats")
+  {
+    s="Shared with:"+score
+  }
+  else if(page=="history")
+  {
+    s="Received at:"+time
+  }
   return (
     <div>
       <Accordion sx={{backgroundColor: "#fae1dd",width: "100%"}}>
@@ -18,8 +26,8 @@ const MessageItem = (props) => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography sx={{width: "100%", textOverflow: "ellipsis"} } noWrap align="center">{text}</Typography>
-          <Typography sx={{ color: "text.secondary", textAlign:"right"}} className="message" >Shared with: {score}</Typography>
+          <Typography sx={{ textOverflow: "ellipsis", overflow: "hidden", width: "11em"} } noWrap align="center">{text}</Typography>
+          <Typography sx={{width: "40%", color: "text.secondary", textAlign:"right"}}  className="message" >{s}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
