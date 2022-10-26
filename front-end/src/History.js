@@ -25,6 +25,7 @@ const History = (props) => {
   let inf=0;
   return(
     <div>
+
       <Box sx={{ width: "100%" }} >
         <Avatar sx={{bgcolor: "#e5989b"} } className="pro">User</Avatar>
         <Typography variant="h6" className="slo" align="center">Many a little makes a mickle, so is Kindness</Typography>
