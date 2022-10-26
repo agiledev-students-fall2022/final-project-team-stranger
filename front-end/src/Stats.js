@@ -19,7 +19,7 @@ import MessageBlock from "./components/MessageItem.js";
 const Stats = (props) => {
 
   var startData=[
-    {text: "AAAA", score: 100, time: "2022-10-1"},
+    {text: "AAAAasfasfasfefasfesafwafaffasfasfafafawfasfaesfafaewf", score: 100, time: "2022-10-1"},
     {text: "BBBB", score: 50, time: "2022-9-10"}
   ]
   const [data, setData] = useState(startData)
@@ -66,9 +66,12 @@ const Stats = (props) => {
         <Avatar sx={{bgcolor: "#e5989b"} } className="profile">User</Avatar>
         <Typography variant="h6" className="Slogan" align="center">Embrace Warmth <br></br>You Sent to the World</Typography>
       </Box>
+
+      <br></br>
+      <br></br>
       <Box sx={{ width: "100%" }} display="flex" justifyContent={"right"}>
        
-        <FormControl sx={{ width: "20%", marginRight:3 }} >
+        <FormControl sx={{ width: "20%", marginRight:4 }} >
           <InputLabel id="Select" className="default_text">Sorted By</InputLabel>
           <Select label="Sorted By" onChange={(e)=>handleClick(e)} className="sort_icon">
             <MenuItem value="score">Impact</MenuItem>
@@ -76,8 +79,9 @@ const Stats = (props) => {
             <MenuItem value="time" >Time</MenuItem>
           </Select>
         </FormControl>
-        
+      
       </Box>
+      <br></br>
       <Box sx={{width: "100%",m: 3}} textAlign="left">
         <Typography variant="h8" className="influence">Total influence you have made:{inf}</Typography>
       </Box>
