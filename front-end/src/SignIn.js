@@ -14,7 +14,6 @@ const SignIn = (props) => {
   const [formValues, setFormValues] = useState(initialValues);
   const onChange = (e) => {
     const { name, value } = e.target;
-    console.log(e.target)
     setFormValues({
       ...formValues,
       [name]: value,

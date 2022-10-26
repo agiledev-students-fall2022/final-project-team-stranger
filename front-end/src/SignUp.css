@@ -1,0 +1,17 @@
+.pageWrapper{
+    padding: 10%;
+    height: 90%;
+    width: 90%;
+}
+
+.signUpPage {
+    padding-top: 10px;
+}
+
+.signUpForm {
+    padding: 10%;
+}
+
+.signUpFormField > * {
+    margin-bottom: 5%;
+}
