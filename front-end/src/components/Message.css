@@ -6,10 +6,10 @@
   height: 250px;
   overflow: hidden;
   padding: 20px;
-  text-align: center;
 }
 
 .item {
   /* need to position the text in the middle? */
-  margin: 40px auto !important;
+  margin: 35px auto !important;
+  text-align: center;
 }

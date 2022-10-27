@@ -13,7 +13,7 @@ import {
 //Test Messages
 //Maybe limit input length <=250 characters
 let messages = [
-  "When my heart feels lonely, your spirit swiftly bonds me with love. You are my world.When my heart feels lonely, your spirit swiftly bonds me with love. You are my world.When my heart feels lonely, your spirit swiftly bonds me with love. You are my world.",
+  "When my heart feels lonely, your spirit swiftly bonds me with love. You are my world.",
   "Anytime I think of how much I have lost out, I smile because I've not lost out in finding that one Jewel so priceless and virtuous. You fill my world with blessings sweetheart.",
   "I'll hug you all day if I could...",
 ];
@@ -21,6 +21,9 @@ let messages = [
 const Home = (props) => {
   return (
     <div>
+      <Typography variant="h4" color="primary" id="welcome">
+        Welcome Home!
+      </Typography>
       <Carousel
         swipe="true"
         navButtonsAlwaysVisible="true"
