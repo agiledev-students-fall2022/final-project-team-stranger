@@ -1,3 +1,9 @@
 .message{
     text-align: right;
 }
+.Summary{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 11em;
+    
+}

@@ -63,15 +63,15 @@ const Stats = (props) => {
   return(
     <div>
       <Box sx={{ width: "100%" }} >
-        <Avatar variant="circular" alt="User" sx={{bgcolor: "primary"} } className="profile"></Avatar>
-        <Typography variant="h6" className="Slogan" align="center">Embrace Warmth <br></br>You Sent to the World</Typography>
+        <Avatar variant="circular" alt="User" className="profile"></Avatar>
+        <Typography variant="h6" className="Slogan">Embrace Warmth <br></br>You Sent to the World</Typography>
       </Box>
 
       <br></br>
       <br></br>
       <Box sx={{ width: "100%" }} display="flex" justifyContent={"right"}>
        
-        <FormControl sx={{ width: "20%", marginRight:4 }} >
+        <FormControl className="SortChoices">
           <InputLabel id="Select" className="default_text">Sorted By</InputLabel>
           <Select label="Sorted By" onChange={(e)=>handleClick(e)} className="sort_icon" defaultValue={"score"}>
             <MenuItem value="score">Impact</MenuItem>
@@ -82,7 +82,7 @@ const Stats = (props) => {
       
       </Box>
       <br></br>
-      <Box sx={{width: "100%",m: 3}} textAlign="left">
+      <Box textAlign="left" className="Total">
         <Typography variant="h8" className="influence">Your Total influence: {inf}</Typography>
       </Box>
       <Box>
