@@ -1,5 +1,10 @@
+#welcome {
+  margin: 15px auto;
+}
+
 .preview {
   margin: 20px 30px;
+  text-overflow: ellipsis;
   overflow: hidden;
 }
 
