@@ -1,9 +1,18 @@
-import "./Message.css"
+import "./Message.css";
+import { Paper, Typography } from "@mui/material";
 
-const Message = props => {
+const Message = (props) => {
   return (
-    <p>Placeholder Message Component!</p>
-  )
-}
+    <Paper
+      className="message"
+      elevation={5}
+      sx={{
+        borderRadius: 2,
+      }}
+    >
+      <Typography className="item">{props.message}</Typography>
+    </Paper>
+  );
+};
 
-export default Message; 
+export default Message;
