@@ -63,7 +63,7 @@ const Stats = (props) => {
   return(
     <div>
       <Box sx={{ width: "100%" }} >
-        <Avatar variant="circular" alt="User" sx={{bgcolor: "#e5989b"} } className="profile"></Avatar>
+        <Avatar variant="circular" alt="User" sx={{bgcolor: "primary"} } className="profile"></Avatar>
         <Typography variant="h6" className="Slogan" align="center">Embrace Warmth <br></br>You Sent to the World</Typography>
       </Box>
 

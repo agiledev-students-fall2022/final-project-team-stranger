@@ -26,7 +26,7 @@ const History = (props) => {
   return(
     <div className="historyPageWrapper">
       <Box>
-        <Avatar sx={{bgcolor: "primary"} } className="pro">User</Avatar>
+        <Avatar variant="circular" alt="User" sx={{bgcolor: "primary"} } className="profile"></Avatar>
         <Typography variant="h6" className="slo" align="center">
           Many a little makes a mickle, so is Kindness
         </Typography>
