@@ -24,24 +24,23 @@ const History = (props) => {
 
   let inf=0;
   return(
-    <div>
-
-      <Box sx={{ width: "100%" }} >
-        <Avatar sx={{bgcolor: "#e5989b"} } className="pro">User</Avatar>
-        <Typography variant="h6" className="slo" align="center">Many a little makes a mickle, so is Kindness</Typography>
+    <div className="historyPageWrapper">
+      <Box>
+        <Avatar variant="circular" alt="User" sx={{bgcolor: "primary"} } className="profile"></Avatar>
+        <Typography variant="h6" className="slo" align="center">
+          Many a little makes a mickle, so is Kindness
+        </Typography>
       </Box>
-      <Box sx={{width: "100%",m: 3}} textAlign="left">
-        <Typography variant="h8" className="received">Total messages you have received:{inf}</Typography>
+      <Box sx={{m: 3}} textAlign="left">
+        <Typography variant="h8" className="received">Total Received Messages: {inf}</Typography>
       </Box>
-      <Box sx={{width: "100%", marginRight: 3}} textAlign="right">
-        <Typography variant="h8" className="last">Your Last 15 messages</Typography>
+      <Box textAlign="right">
+        <Typography variant="h8" className="recentMessages">Recent Messages</Typography>
       </Box>
       <Box>
-
         {data.map((item,index)=> (
           <MessageBlock key={index} text={item.text} score={item.score} time={item.time} page="history" />
         ))}
-
       </Box>
     </div>
     

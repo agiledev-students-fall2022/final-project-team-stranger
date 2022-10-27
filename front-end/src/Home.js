@@ -44,7 +44,7 @@ const Home = (props) => {
           </Button>
         </CardActions>
         <CardContent className="content">
-          <Typography color="primary">Total Views Gained: </Typography>
+          <Typography color="primary">Total Views Gained</Typography>
           <Typography color="secondary">{props.views}</Typography>
         </CardContent>
       </Card>
@@ -54,13 +54,13 @@ const Home = (props) => {
             className="info"
             size="small"
             color="secondary"
-            href="/message-history"
+            href="/history"
           >
             More
           </Button>
         </CardActions>
         <CardContent className="content">
-          <Typography color="primary">Previous Highlight: </Typography>
+          <Typography color="primary">Previous Highlights </Typography>
           <Typography color="secondary">{props.lastMessage}</Typography>
         </CardContent>
       </Card>
