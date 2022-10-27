@@ -43,8 +43,11 @@ Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
 
 This section will be completed as we build out the front-end and backend.
 
+- To run the frontend
+  - Please navigate to `/frontend`
+  - Install all dependencies using `npm install`
+  - Run the application using `npm start`
 - To run the backend: PLACEHOLDER
-- To run the frontend: PLACEHOLDER
 - To use the database: PLACEHOLDER
 
 ## Roles
@@ -68,6 +71,7 @@ This section will be completed as we build out the front-end and backend.
 - Harry
 
 ### Sprint 1
+
 #### Product Owner
 
 - Youyu
@@ -84,6 +88,21 @@ This section will be completed as we build out the front-end and backend.
 - Harry
 
 ### Sprint 2
+
+#### Product Owner
+
+- Rashed Rifat
+
+#### Scrum Master
+
+- Lawrence Gu
+
+#### Developers
+
+- Lawrence Gu
+- Rashed Rifat
+- Harry Zhu
+- Richard Yang
 
 ### Sprint 3
 
