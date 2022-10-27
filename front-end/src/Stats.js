@@ -19,8 +19,8 @@ import MessageBlock from "./components/MessageItem.js";
 const Stats = (props) => {
 
   var startData=[
-    {text: "AAAAasfasfasfefasfesafwafaffasfasfafafawfasfaesfafaewf", score: 100, time: "2022-10-1"},
-    {text: "BBBB", score: 50, time: "2022-9-10"}
+    {text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", score: 100, time: "2022-10-1"},
+    {text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua", score: 50, time: "2022-9-10"}
   ]
   const [data, setData] = useState(startData)
 
@@ -57,7 +57,7 @@ const Stats = (props) => {
   }))
 
   
-  let inf=0;
+  let inf = 0;
 
   
   return(
@@ -73,7 +73,7 @@ const Stats = (props) => {
        
         <FormControl sx={{ width: "20%", marginRight:4 }} >
           <InputLabel id="Select" className="default_text">Sorted By</InputLabel>
-          <Select label="Sorted By" onChange={(e)=>handleClick(e)} className="sort_icon">
+          <Select label="Sorted By" onChange={(e)=>handleClick(e)} className="sort_icon" defaultValue={"score"}>
             <MenuItem value="score">Impact</MenuItem>
             <MenuItem value="text" >Text</MenuItem>
             <MenuItem value="time" >Time</MenuItem>
@@ -83,7 +83,7 @@ const Stats = (props) => {
       </Box>
       <br></br>
       <Box sx={{width: "100%",m: 3}} textAlign="left">
-        <Typography variant="h8" className="influence">Total influence you have made:{inf}</Typography>
+        <Typography variant="h8" className="influence">Your Total influence: {inf}</Typography>
       </Box>
       <Box>
 

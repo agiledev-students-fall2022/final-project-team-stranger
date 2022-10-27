@@ -19,9 +19,9 @@ const MessageItem = (props) => {
   }
   return (
     <div>
-      <Accordion sx={{backgroundColor: "#fae1dd",width: "100%"}}>
+      <Accordion sx={{backgroundColor: "secondary" , width: "100%", border: 1}}>
+        
         <AccordionSummary
-          
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
@@ -31,12 +31,10 @@ const MessageItem = (props) => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            You shared this word on {time}. So far it has influenced {score} people. Thank you effort for making the world a warmer place.
+            You shared this message on {time}. So far it has influenced {score} people. Thank you effort for making the world a warmer place.
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <br></br>
-      <br></br>
     </div>
   )
 };
