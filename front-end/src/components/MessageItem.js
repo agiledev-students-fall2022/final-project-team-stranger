@@ -19,7 +19,7 @@ const MessageItem = (props) => {
   }
   return (
     <div>
-      <Accordion sx={{backgroundColor: "#fae1dd",width: "100%"}}>
+      <Accordion sx={{width: "100%", border:1}}>
         <AccordionSummary
           
           expandIcon={<ExpandMoreIcon />}
@@ -35,8 +35,6 @@ const MessageItem = (props) => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <br></br>
-      <br></br>
     </div>
   )
 };

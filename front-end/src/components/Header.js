@@ -17,7 +17,7 @@ const Header = (props) => {
     <AppBar position="static" color="primary">
       <Toolbar>
         <IconButton href="/" fontSize="large">
-          <LogoIcon color="white" sx={{fontSize : "3rem"}}/>
+          <LogoIcon color="primary" sx={{fontSize : "3rem"}}/>
         </IconButton>
         <Box>
           {Object.keys(pages).map(page => {
