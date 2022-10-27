@@ -1,0 +1,13 @@
+.MuiDrawer-paper {
+  width: 60%;
+  color: #e9ecef;
+  background-color: #495057;
+}
+
+ul {
+  margin-top: 60vh !important;
+}
+
+#profile {
+  margin: 15px;
+}
