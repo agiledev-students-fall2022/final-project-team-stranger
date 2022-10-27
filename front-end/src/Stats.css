@@ -1,0 +1,19 @@
+.profile{
+    border-radius: 1px;
+    top: 45px;
+    left: 10%;
+    /* variant: circular; */
+
+}
+
+.Slogan{
+    padding-left: 100px;
+}
+
+
+
+.sort_icon{
+    
+    height: 30px;
+    width: 100px;
+}
