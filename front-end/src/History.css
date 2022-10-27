@@ -16,3 +16,12 @@
 .recentMessages {
     padding-right: 5%;
 }
+
+.historyHeader {
+    padding-bottom: 5%;
+}
+
+.receivedMessagesDiv {
+    text-align: left;
+    margin: 3%;
+}
