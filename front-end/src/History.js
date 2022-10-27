@@ -22,16 +22,16 @@ const History = (props) => {
     {text: "BBBB", score: 50, time: "2022-9-10"}
   ]
 
-  let inf=0;
+  let inf = data.length;
   return(
     <div className="historyPageWrapper">
-      <Box>
+      <Box className="historyHeader">
         <Avatar variant="circular" alt="User" sx={{bgcolor: "primary"} } className="profile"></Avatar>
-        <Typography variant="h6" className="slo" align="center">
-          Many a little makes a mickle, so is Kindness
+        <Typography variant="h6" className="slo" align="center" paddingRight="5%">
+          Kind Messages from Total Strangers!
         </Typography>
       </Box>
-      <Box sx={{m: 3}} textAlign="left">
+      <Box className="receivedMessagesDiv">
         <Typography variant="h8" className="received">Total Received Messages: {inf}</Typography>
       </Box>
       <Box textAlign="right">
