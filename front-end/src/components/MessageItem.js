@@ -13,13 +13,14 @@ const MessageItem = (props) => {
   else if(page == "history") {s = "You received this message on " + time}
 
   return (
-    <div className="messageItemWrapper">
-      <Accordion>
+    <div >
+      <Accordion sx={{border: 1}}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon/>}
           aria-controls="panel1a-content"
-          id="panel1a-header">
-          <Typography sx={{textOverflow: "ellipsis", overflow: "hidden", width: "11em"} } noWrap align="left">{text}</Typography>
+          id="panel1a-header"
+        >
+          <Typography noWrap align="left" className="Summary">{text}</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography textAlign="left">
