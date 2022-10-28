@@ -1,9 +1,5 @@
 import "./Stats.css";
-import { Link, renderMatches } from "react-router-dom";
-import * as React from "react";
-import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
-import { ClassNames } from "@emotion/react";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -15,14 +11,21 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import MessageBlock from "./components/MessageItem.js";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const Stats = (props) => {
+  const [data, setData] = useState([]); 
+  const url = "https://my.api.mockaroo.com/stats?key=d685d830"; 
 
-  var startData=[
-    {text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", score: 100, time: "2022-10-1"},
-    {text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua", score: 50, time: "2022-9-10"}
-  ]
-  const [data, setData] = useState(startData)
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios(url);
+      setData(result.data);
+    }
+    fetchData();
+  }, []);
+
 
   function downSort(propertyName) {
     if ((typeof data[0][propertyName]) != "number") {
