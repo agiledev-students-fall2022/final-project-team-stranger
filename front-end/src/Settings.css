@@ -1,0 +1,21 @@
+.pageWrapper{
+    padding: 10%;
+    height: 90%;
+    width: 90%;
+}
+
+.settingsPage {
+    padding-top: 5%;
+}
+
+.settingsForm {
+    padding: 10%;
+}
+
+.settingsFormField > * {
+    margin-bottom: 5%;
+}
+
+.formLabel {
+    text-align: left;
+}
