@@ -9,16 +9,22 @@ import {
   Typography,
   Button,
 } from "@mui/material";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
-//Test Messages
-//Maybe limit input length <=250 characters
-let messages = [
-  "When my heart feels lonely, your spirit swiftly bonds me with love. You are my world.",
-  "Anytime I think of how much I have lost out, I smile because I've not lost out in finding that one Jewel so priceless and virtuous. You fill my world with blessings sweetheart.",
-  "I'll hug you all day if I could...",
-];
 
 const Home = (props) => {
+  const [messages, setMessages] = useState([]); 
+  const url = "https://my.api.mockaroo.com/messages?key=d685d830";
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios(url);
+      setMessages(result.data);
+    }
+    fetchData();
+  }, []);
+
   return (
     <div>
       <Typography variant="h4" color="primary" id="welcome">

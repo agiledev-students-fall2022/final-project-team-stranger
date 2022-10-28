@@ -1,26 +1,28 @@
 import "./History.css";
-import { Link, renderMatches } from "react-router-dom";
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
-import { ClassNames } from "@emotion/react";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
 import MessageBlock from "./components/MessageItem.js";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const History = (props) => {
+  const [data, setData] = useState([]); 
+  const url = "https://my.api.mockaroo.com/history?key=d685d830"; 
 
-  var data=[
-    {text: "AAAA", score: 100, time: "2022-10-1"},
-    {text: "BBBB", score: 50, time: "2022-9-10"}
-  ]
+  useEffect(() => {
+    async function fetchData() {
+      const result = await axios(url);
+      setData(result.data);
+    }
+    fetchData();
+  }, []);
+
 
   let inf = data.length;
   return(
