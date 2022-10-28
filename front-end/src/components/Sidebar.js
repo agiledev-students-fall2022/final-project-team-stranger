@@ -24,7 +24,7 @@ const Sidebar = (props) => {
   return (
     <>
       <IconButton>
-        <AccountCircleIcon onClick={toggleDrawer} />
+        <AccountCircleIcon style={{ fill: "#e9ecef" }} onClick={toggleDrawer} />
       </IconButton>
       <SwipeableDrawer id="menu" open={isOpen} onClose={toggleDrawer}>
         <Box id="profile">
@@ -38,7 +38,7 @@ const Sidebar = (props) => {
           <ListItem disablePadding>
             <ListItemButton id="sign-in" className="menu-item" href="/sign-in">
               <ListItemIcon>
-                <LogoutIcon />
+                <LogoutIcon style={{ fill: "#e9ecef" }} />
               </ListItemIcon>
               <ListItemText primary="Sign out" />
             </ListItemButton>
@@ -50,7 +50,7 @@ const Sidebar = (props) => {
               href="/settings"
             >
               <ListItemIcon>
-                <SettingsIcon />
+                <SettingsIcon style={{ fill: "#e9ecef" }} />
               </ListItemIcon>
               <ListItemText primary="Settings" />
             </ListItemButton>

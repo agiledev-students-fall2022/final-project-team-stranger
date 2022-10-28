@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar";
 
 const pages = {
   Home: "/",
-  "Send Message": "/send-message",
+  Send: "/send-message",
   Stats: "/stats",
 };
 
@@ -18,10 +18,15 @@ const Header = (props) => {
         <IconButton href="/" fontSize="large">
           <LogoIcon color="primary" sx={{ fontSize: "3rem" }} />
         </IconButton>
-        <Box>
+        <Box id="box">
           {Object.keys(pages).map((page) => {
             return (
-              <Button key={page} color="inherit" href={pages[page]}>
+              <Button
+                key={page}
+                color="inherit"
+                href={pages[page]}
+                className="links"
+              >
                 {page}
               </Button>
             );

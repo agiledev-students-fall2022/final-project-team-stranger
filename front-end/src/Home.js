@@ -36,7 +36,6 @@ const Home = (props) => {
       <Timer />
       <br />
       <br />
-      <br />
       <Card container className="preview" variant="outlined">
         <CardActions className="action">
           <Button className="info" size="small" color="secondary" href="/stats">
