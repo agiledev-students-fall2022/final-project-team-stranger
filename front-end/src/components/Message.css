@@ -6,6 +6,7 @@
   height: 250px;
   overflow: hidden;
   padding: 20px;
+  border-radius: 10px;
 }
 
 .item {

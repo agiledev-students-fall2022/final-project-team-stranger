@@ -6,9 +6,6 @@ const Message = (props) => {
     <Paper
       className="message"
       elevation={5}
-      sx={{
-        borderRadius: 2,
-      }}
     >
       <Typography className="item">{props.message}</Typography>
     </Paper>

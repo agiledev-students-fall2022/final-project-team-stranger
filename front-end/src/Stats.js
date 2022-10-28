@@ -65,14 +65,14 @@ const Stats = (props) => {
   
   return(
     <div>
-      <Box sx={{ width: "100%" }} >
+      <Box className="container">
         <Avatar variant="circular" alt="User" className="profile"></Avatar>
         <Typography variant="h6" className="Slogan">Embrace Warmth <br></br>You Sent to the World</Typography>
       </Box>
 
       <br></br>
       <br></br>
-      <Box sx={{ width: "100%" }} display="flex" justifyContent={"right"}>
+      <Box className="container" display="flex" justifyContent={"right"}>
        
         <FormControl className="SortChoices">
           <InputLabel id="Select" className="default_text">Sorted By</InputLabel>

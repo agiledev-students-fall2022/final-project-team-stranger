@@ -15,3 +15,7 @@
 .signInFormField > * {
     margin-bottom: 5%;
 }
+
+.logoIcon{
+    font-size: 5rem;
+}

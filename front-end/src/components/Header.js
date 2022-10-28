@@ -16,7 +16,7 @@ const Header = (props) => {
       <Toolbar>
         <Sidebar />
         <IconButton href="/" fontSize="large">
-          <LogoIcon color="primary" sx={{ fontSize: "3rem" }} />
+          <LogoIcon color="primary"  className="logo" />
         </IconButton>
         <Box id="box">
           {Object.keys(pages).map((page) => {

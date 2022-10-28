@@ -28,7 +28,7 @@ const SignIn = (props) => {
   return <Grid className="signInPage" align="center">
     <Paper elevation={10} className="pageWrapper">
       <Grid className="signInLogo">
-        <LogoIcon color="primary" sx={{fontSize : "5rem"}}/>
+        <LogoIcon color="primary"  className="logoIcon"/>
         <Typography className="signInHeader"><b>Hello, Stranger! <br/> Sign In?</b></Typography>
       </Grid>
 

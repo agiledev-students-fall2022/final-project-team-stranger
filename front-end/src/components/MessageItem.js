@@ -14,7 +14,7 @@ const MessageItem = (props) => {
 
   return (
     <div >
-      <Accordion sx={{border: 1}}>
+      <Accordion className="frame">
         <AccordionSummary
           expandIcon={<ExpandMoreIcon/>}
           aria-controls="panel1a-content"

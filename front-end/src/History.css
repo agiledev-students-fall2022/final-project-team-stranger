@@ -1,7 +1,8 @@
-.pro{
+.profile{
     border-radius: 1px;
     top: 45px;
-    left: 10%
+    left: 10%;
+    background-color: "primary";
 }
 
 .slo{
