@@ -23,7 +23,7 @@ const SendMessage = (props) => {
 
   return (
     <>
-      <Grid2 container sx={{ m: "0px 15px" }}>
+      <Grid2 container className="contain">
         <Grid2 item xs={5} sm={4}>
           <h3>New Message</h3>
         </Grid2>

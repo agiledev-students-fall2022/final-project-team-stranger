@@ -18,3 +18,11 @@
     font-size: 20px; 
     color: rgb(0, 0, 0);
   }
+
+  .paper{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  

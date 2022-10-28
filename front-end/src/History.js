@@ -28,7 +28,7 @@ const History = (props) => {
   return(
     <div className="historyPageWrapper">
       <Box className="historyHeader">
-        <Avatar variant="circular" alt="User" sx={{bgcolor: "primary"} } className="profile"></Avatar>
+        <Avatar variant="circular" alt="User" className="profile"></Avatar>
         <Typography variant="h6" className="slo" align="center" paddingRight="5%">
           Kind Messages from Total Strangers!
         </Typography>
