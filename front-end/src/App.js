@@ -4,7 +4,6 @@ import Footer from "./components/Footer.js";
 import Home from "./Home.js";
 import SignIn from "./SignIn.js";
 import SignUp from "./SignUp.js";
-import Profile from "./Profile";
 import SendMessage from "./SendMessage.js";
 import History from "./History";
 import Stats from "./Stats.js";
@@ -55,9 +54,6 @@ function App() {
 
                 {/* Path to Sign Up */}
                 <Route path="/sign-up" element={<SignUp />}></Route>
-
-                {/* Path to Profile Page */}
-                <Route path="/profile" element={<Profile />}></Route>
 
                 {/* Path to Send Message Page */}
                 <Route path="/send-message" element={<SendMessage />}></Route>
