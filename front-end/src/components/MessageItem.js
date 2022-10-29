@@ -24,11 +24,9 @@ const MessageItem = (props) => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography textAlign="left">
-            <ul>
-              <li>{s}</li>
-              <li> So far it has influenced {score} people.</li>
-              <li> Thank you effort for making the world a warmer place!</li>
-            </ul>
+            <li>{s}</li>
+            <li> So far it has influenced {score} people.</li>
+            <li> Thank you effort for making the world a warmer place!</li>
           </Typography>
         </AccordionDetails>
       </Accordion>
