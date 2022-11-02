@@ -53,6 +53,10 @@ This section will be completed as we build out the front-end and backend.
   - Create a file with the name `.env`
   - Copy the values from `.example.env` into the file you created above, changing the environment variables as necessary.
   - To run the application, run `nodemon server.js`
+- To run the backend tests
+  - Navigate to `/backend/tests`
+  - Choose the test you want to execute (`demo.js`)
+  - Execute your chosen test file using `npx mocha <filename>`
 - To use the database: PLACEHOLDER
 
 ## Roles
