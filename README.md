@@ -47,7 +47,12 @@ This section will be completed as we build out the front-end and backend.
   - Please navigate to `/frontend`
   - Install all dependencies using `npm install`
   - Run the application using `npm start`
-- To run the backend: PLACEHOLDER
+- To run the backend:
+  - Please navigate toe `/backend`
+  - Install all dependencies using `npm install`
+  - Create a file with the name `.env`
+  - Copy the values from `.example.env` into the file you created above, changing the environment variables as necessary.
+  - To run the application, run `nodemon server.js`
 - To use the database: PLACEHOLDER
 
 ## Roles
