@@ -4,7 +4,7 @@
   background-color: #495057;
 }
 
-ul {
+ul.actions {
   margin-top: 60vh !important;
 }
 
@@ -12,14 +12,14 @@ ul {
   margin: 15px;
 }
 
-.circleIcon{
-  fill:#e9ecef
+.circleIcon {
+  fill: #e9ecef;
 }
 
-.logOut{
-  fill:#e9ecef;
+.logOut {
+  fill: #e9ecef;
 }
 
-.settingIcon{
-  fill:#e9ecef;
+.settingIcon {
+  fill: #e9ecef;
 }
