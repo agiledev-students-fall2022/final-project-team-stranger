@@ -12,17 +12,40 @@ import {
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-
 const Home = (props) => {
-  const [messages, setMessages] = useState([]); 
+  const [messages, setMessages] = useState([]);
+  const [views, setViews] = useState(0);
+  const [lastMessage, setLastMessage] = useState("");
+  const [error, setError] = useState("");
+  const [date, setDate] = useState(new Date().getDate());
   const url = "https://my.api.mockaroo.com/messages?key=d685d830";
 
+  const fetchMessages = () => {
+    axios
+      .get("/messages")
+      .then((response) => {
+        // axios bundles up all response data in response.data property
+        const messages = response.data.messages;
+        setMessages(messages);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        // the response has been received, so remove the loading icon
+        //setLoaded(true)
+        console.log("Content successfully loaded.");
+      });
+  };
+
   useEffect(() => {
-    async function fetchData() {
-      const result = await axios(url);
-      setMessages(result.data);
+    fetchMessages();
+    //update when date changes
+    let currentDate;
+    if ((currentDate = new Date().getDate()) != date) {
+      fetchMessages();
+      setDate(currentDate);
     }
-    fetchData();
   }, []);
 
   return (
@@ -39,7 +62,7 @@ const Home = (props) => {
           <Message key={i} message={msg} />
         ))}
       </Carousel>
-      <Timer />
+      <Timer currentDate={date} />
       <br />
       <br />
       <Card container className="preview" variant="outlined">
@@ -49,8 +72,8 @@ const Home = (props) => {
           </Button>
         </CardActions>
         <CardContent className="content">
-          <Typography color="primary">Total Views Gained</Typography>
-          <Typography color="secondary">{props.views}</Typography>
+          <Typography color="primary">Highest Views Gained</Typography>
+          <Typography color="secondary">{views}</Typography>
         </CardContent>
       </Card>
       <Card className="preview" variant="outlined">
@@ -66,7 +89,7 @@ const Home = (props) => {
         </CardActions>
         <CardContent className="content">
           <Typography color="primary">Previous Highlights </Typography>
-          <Typography color="secondary">{props.lastMessage}</Typography>
+          <Typography color="secondary">{lastMessage}</Typography>
         </CardContent>
       </Card>
     </div>
