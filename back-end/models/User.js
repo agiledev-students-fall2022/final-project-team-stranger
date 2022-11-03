@@ -25,6 +25,13 @@ const User = mongoose.Schema(
                 type: mongoose.Schema.Types.ObjectId, 
                 ref : "Message"
             }
+        ], 
+
+        previousMessages: [
+            {
+                type: mongoose.Schema.Types.ObjectId, 
+                ref : "Message"
+            }
         ]
     }, 
 
