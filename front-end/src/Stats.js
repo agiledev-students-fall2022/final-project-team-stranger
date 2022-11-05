@@ -16,17 +16,18 @@ import { useState, useEffect } from "react";
 
 const Stats = (props) => {
   const [data, setData] = useState([]); 
-  const url = "https://my.api.mockaroo.com/stats?key=d685d830"; 
 
+  const api="http://localhost:3000/stats/api"
   useEffect(() => {
     async function fetchData() {
-      const result = await axios(url);
+      const result = await axios(api);
       setData(result.data);
     }
     fetchData();
   }, []);
 
 
+  console.log(data)
   function downSort(propertyName) {
     if ((typeof data[0][propertyName]) != "number") {
       return function(object1, object2) {
