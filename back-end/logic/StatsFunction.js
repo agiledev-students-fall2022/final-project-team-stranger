@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 require("dotenv").config({ silent: true });
 
-app.get("/stats/api", (req,res) =>{
+router.get("/stats", (req,res) =>{
     res.header("Access-Control-Allow-Origin", "*");
     const response=axios
     .get("https://my.api.mockaroo.com/stats?key=d685d830")

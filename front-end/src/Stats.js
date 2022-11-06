@@ -17,7 +17,7 @@ import { useState, useEffect } from "react";
 const Stats = (props) => {
   const [data, setData] = useState([]); 
 
-  const api="http://localhost:3000/stats/api"
+  const api="http://localhost:3000/stats"
   useEffect(() => {
     async function fetchData() {
       const result = await axios(api);

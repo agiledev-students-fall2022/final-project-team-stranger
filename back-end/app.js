@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv'; 
 import axios from 'axios';
+
 dotenv.config({
     silent: true 
 }); 
@@ -29,7 +30,6 @@ app.get("/", (req, res) => {
     Your .env file is currently ${process.env.TEST ? '' : 'NOT'} setup properly!
     `); 
 })
-
 
 
 export default app; 
