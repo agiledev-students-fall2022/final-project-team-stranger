@@ -5,7 +5,7 @@
   "description": "The back-end of your project will live in this directory.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc mocha tests/test.js --timeout=3000"
   },
   "author": "",
   "license": "ISC",

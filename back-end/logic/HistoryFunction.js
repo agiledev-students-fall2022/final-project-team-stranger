@@ -3,6 +3,11 @@ const router = express.Router();
 const axios = require('axios');
 require("dotenv").config({ silent: true });
 
+function downsort(response,name){
+    const ret=response.sort((a,b)=>(b[name].localeCompare(a[name])));
+    return ret;
+}
+
 router.get("/history", async (req,res) =>{
     res.header("Access-Control-Allow-Origin", "*");
     try {
@@ -12,7 +17,7 @@ router.get("/history", async (req,res) =>{
     
         const responseData = apiResponse.data
 
-        responseData.sort((a,b)=>(b["time"].localeCompare(a["time"])))
+        responseData=downsort(responseData,"time");
     
         // send the data in the response
         res.json(responseData)
