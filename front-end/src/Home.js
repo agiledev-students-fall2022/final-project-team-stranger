@@ -18,11 +18,12 @@ const Home = (props) => {
   const [lastMessage, setLastMessage] = useState("");
   const [error, setError] = useState("");
   const [date, setDate] = useState(new Date().getDate());
-  const url = "https://my.api.mockaroo.com/messages?key=d685d830";
+  const url = "http://localhost:3000";
+  //const url = "https://my.api.mockaroo.com/messages?key=d685d830";
 
   const fetchMessages = () => {
     axios
-      .get("/messages")
+      .get(`${url}/messages`)
       .then((response) => {
         // axios bundles up all response data in response.data property
         const messages = response.data.messages;
@@ -30,6 +31,26 @@ const Home = (props) => {
       })
       .catch((err) => {
         setError(err);
+        console.error(error);
+      })
+      .finally(() => {
+        // the response has been received, so remove the loading icon
+        //setLoaded(true)
+        console.log("Content successfully loaded.");
+      });
+  };
+
+  const fetchSummary = () => {
+    axios
+      .get(`${url}/summary`)
+      .then((response) => {
+        // axios bundles up all response data in response.data property
+        setViews(response.data.view);
+        setLastMessage(response.data.lastMessage);
+      })
+      .catch((err) => {
+        setError(err);
+        console.error(error);
       })
       .finally(() => {
         // the response has been received, so remove the loading icon
@@ -40,6 +61,7 @@ const Home = (props) => {
 
   useEffect(() => {
     fetchMessages();
+    fetchSummary();
     //update when date changes
     let currentDate;
     if ((currentDate = new Date().getDate()) != date) {

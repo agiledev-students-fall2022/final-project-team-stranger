@@ -6,6 +6,8 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
 
+const url = "http://localhost:3000";
+
 const SendMessage = (props) => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -19,7 +21,7 @@ const SendMessage = (props) => {
     } else {
       axios
         // post new message to server
-        .post("/message/upload", {
+        .post(`${url}/send-message`, {
           message: message,
         })
         .then((response) => {
@@ -30,6 +32,7 @@ const SendMessage = (props) => {
         })
         .catch((err) => {
           setError(`error:${err}`);
+          alert(error);
         });
       setMessage("");
     }
