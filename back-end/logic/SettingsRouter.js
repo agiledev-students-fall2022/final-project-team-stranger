@@ -7,7 +7,7 @@ settingsRouter.post("/settings/update", (req, res) => {
     const data = req.body; 
 
     // Mocked Database Interaction with Mckaroo
-    const result = nt.sendPostRequest("https://my.api.mockaroo.com/settings-update?key=d685d830")
+    const result = nt.makePostRequest("https://my.api.mockaroo.com/settings-update?key=d685d830")
     res.send({"msg" : "Done!"})
 })
 
@@ -15,7 +15,10 @@ settingsRouter.post("/settings/get", (req, res) => {
     // Database Interaction here 
     const data = req.body; 
 
-    const result = nt.sendGetRequest("https://my.api.mockaroo.com/user?key=d685d830"); 
+    // Mocked Database Interaction 
+    const result = nt.makeGetRequest("https://my.api.mockaroo.com/user?key=d685d830"); 
+
+    // If we exceed the 200 daily request limit, send back some sample data
     if (!result.data) {
         res.send({
             username: "John Smith", 
@@ -25,6 +28,7 @@ settingsRouter.post("/settings/get", (req, res) => {
             passwordError: ""
           })
     }
+    // Else, send back the real data 
     else {
         res.send(result.data); 
     }
