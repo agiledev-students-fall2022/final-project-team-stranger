@@ -1,18 +1,24 @@
-import app from "../app";
 import express from "express";
-import Message from "./models/Message.js";
-import User from "./models/User.js";
+import Message from "../models/Message.js";
+import User from "../models/User.js";
 
-app.post("/message/upload", async (req, res) => {
+let messages = [
+  "When my heart feels lonely, your spirit swiftly bonds me with love. You are my world.",
+  "Anytime I think of how much I have lost out, I smile because I've not lost out in finding that one Jewel so priceless and virtuous. You fill my world with blessings sweetheart.",
+  "I'll hug you all day if I could...",
+];
+
+const messageRouter = express.Router();
+messageRouter.post("/send-message", async (req, res) => {
   // try to save the message to the database
   try {
-    const message = await Message.create({
-      created_by: "0", //user ID
-      content: req.body.message,
-      frequency: 0,
-    });
+    // const message = await Message.create({
+    //   created_by: "0", //user ID
+    //   content: req.body.message,
+    //   frequency: 0,
+    // });
     return res.json({
-      message: message, // return the message we just saved
+      message: req.body.message, // return the message we just saved
       status: "all good",
     });
   } catch (err) {
@@ -24,10 +30,11 @@ app.post("/message/upload", async (req, res) => {
   }
 });
 
-app.get("/messages", async (req, res) => {
+messageRouter.get("/messages", async (req, res) => {
   // load all messages from database
   try {
-    const messages = await Message.find({});
+    // const messages = await Message.find({});
+    //static test
     res.json({
       messages: messages,
       status: "all good",
@@ -42,12 +49,13 @@ app.get("/messages", async (req, res) => {
 });
 
 // a route to handle fetching a single message by its id
-app.get("/messages/:messageId", async (req, res) => {
+messageRouter.get("/summary", async (req, res) => {
   // load all messages from database
   try {
-    const messages = await Message.find({ _id: req.params.messageId });
+    //const messages = await Message.find({ _id: req.params.messageId });
     res.json({
-      messages: messages,
+      view: 100,
+      lastMessage: messages[messages.length - 1],
       status: "all good",
     });
   } catch (err) {
@@ -58,3 +66,5 @@ app.get("/messages/:messageId", async (req, res) => {
     });
   }
 });
+
+export default messageRouter;
