@@ -9,6 +9,8 @@ import mongoose from "mongoose";
 import User from "./models/User.js"; 
 import Message from "./models/Message.js";
 
+import settingsRouter from './logic/SettingsRouter.js';
+
 // FOR LATER - connect to database
 // mongoose
 //   .connect(`${process.env.DB_CONNECTION_STRING}`)
@@ -20,6 +22,7 @@ app.use(morgan('dev', { skip: (req, res) => process.env.NODE_ENV === 'test' })) 
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
+app.use("/", settingsRouter); 
 
 app.get("/", (req, res) => {
     res.send(`
@@ -28,5 +31,6 @@ app.get("/", (req, res) => {
     Your .env file is currently ${process.env.TEST ? '' : 'NOT'} setup properly!
     `); 
 })
+
 
 export default app; 
