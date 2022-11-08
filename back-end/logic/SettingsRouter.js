@@ -1,5 +1,5 @@
 import express from "express";
-import sendRequest from "./SendRequest.js";
+import * as nt from "./SendRequest.js";
 
 const settingsRouter = express.Router();
 settingsRouter.post("/settings/update", (req, res) => {
@@ -7,7 +7,7 @@ settingsRouter.post("/settings/update", (req, res) => {
     const data = req.body; 
 
     // Mocked Database Interaction with Mckaroo
-    const result = sendRequest("https://my.api.mockaroo.com/settings-update?key=d685d830")
+    const result = nt.sendPostRequest("https://my.api.mockaroo.com/settings-update?key=d685d830")
     res.send("Done!")
 })
 

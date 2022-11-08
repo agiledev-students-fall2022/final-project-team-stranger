@@ -1,8 +1,15 @@
 import axios from "axios"; 
 
-async function sendRequest(url, data) {
+const sendPostRequest = async (url, data) =>{
     const result = await axios.post(url, data);
-    console.log(result); 
+    return result; 
   }
 
-export default sendRequest; 
+const sendGetRequest = async (url) => {
+    const result = await axios.get(url, data);
+    return result; 
+}
+
+export {
+    sendPostRequest, sendGetRequest
+}
