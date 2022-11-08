@@ -6,7 +6,7 @@ const sendPostRequest = async (url, data) =>{
   }
 
 const sendGetRequest = async (url) => {
-    const result = await axios.get(url, data);
+    const result = await axios.get(url);
     return result; 
 }
 

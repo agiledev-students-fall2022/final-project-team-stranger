@@ -7,12 +7,11 @@ import {
 
 const Settings = (props) => {
   const [formValues, setFormValues] = useState({});
-  const url = "https://my.api.mockaroo.com/user?key=d685d830"; 
   
   // Default values - get settings for the user 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios(url);
+      const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/settings/get`);
       setFormValues(result.data);
     }
     fetchData();
@@ -56,7 +55,7 @@ const Settings = (props) => {
       window.location = "/"; 
     }
 
-    sendRequest("http://localhost:3000/settings/update/", formValues); 
+    sendRequest(`${process.env.REACT_APP_BACKEND_API_URL}/settings/update/`, formValues); 
   }
 
   return <Grid className="settingsPage" align="center">

@@ -18,7 +18,7 @@ import settingsRouter from './logic/SettingsRouter.js';
 //   .catch(err => console.error(`Failed to connect to MongoDB: ${err}`))
 
 const app = express(); 
-app.use(morgan('dev', { skip: (req, res) => process.env.NODE_ENV === 'test' })) // log all incoming requests
+// app.use(morgan('dev', { skip: (req, res) => process.env.NODE_ENV === 'test' })) // log all incoming requests
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
