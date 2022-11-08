@@ -1,9 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const axios = require('axios');
-require("dotenv").config({ silent: true });
+const express=require("express")
+const StatsRouter = express.Router();
+const axios=require("axios")
 
-router.get("/stats", (req,res) =>{
+StatsRouter.get("/stats", (req,res) =>{
     res.header("Access-Control-Allow-Origin", "*");
     const response=axios
     .get("https://my.api.mockaroo.com/stats?key=d685d830")
@@ -15,3 +14,5 @@ router.get("/stats", (req,res) =>{
         })
     )
 })
+
+module.exports = StatsRouter

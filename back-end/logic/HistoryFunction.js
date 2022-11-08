@@ -1,28 +1,36 @@
-const express = require('express');
-const router = express.Router();
-const axios = require('axios');
-require("dotenv").config({ silent: true });
 
-function downsort(response,name){
-    const ret=response.sort((a,b)=>(b[name].localeCompare(a[name])));
-    return ret;
-}
+const express=require("express")
+const HistoryRouter = express.Router();
+const axios=require("axios")
 
-router.get("/history", async (req,res) =>{
+function downsort(propertyName) {
+      return function(object1, object2) {
+        var value1 = object1[propertyName];
+        var value2 = object2[propertyName];
+        return value2.localeCompare(value1);
+      }
+    }
+HistoryRouter.get("/history", async (req,res) =>{
     res.header("Access-Control-Allow-Origin", "*");
     try {
         const apiResponse = await axios.get(
           "https://my.api.mockaroo.com/history?key=b402e590"
         )
-    
-        const responseData = apiResponse.data
+        // console.log(apiResponse.data)
 
-        responseData=downsort(responseData,"time");
+        let responseData=apiResponse.data
+        responseData.sort(downsort("time"))
+
+        console.log("Hello World");
+        // console.log(responseData)
     
         // send the data in the response
         res.json(responseData)
       } catch (err) {
         // send an error JSON object back to the browser
+        console.log(err)
         res.json(err)
       }
 })
+
+module.exports=HistoryRouter

@@ -1,15 +1,17 @@
-import * as dotenv from 'dotenv'; 
-import axios from 'axios';
+const dotenv = require('dotenv'); 
+const axios = require('axios');
 
 dotenv.config({
     silent: true 
 }); 
 
-import express from "express"; 
-import morgan from "morgan";
-import mongoose from "mongoose";
-import User from "./models/User.js"; 
-import Message from "./models/Message.js";
+const express=require("express")
+const morgan=require("morgan")
+const mongoose =require ("mongoose");
+const User = require("./models/User.js"); 
+const Message = require("./models/Message.js");
+const HistoryRouter =require( './logic/HistoryFunction.js');
+const StatsRouter =require('./logic/StatsFunction.js');
 
 // FOR LATER - connect to database
 // mongoose
@@ -31,41 +33,10 @@ app.get("/", (req, res) => {
     `); 
 })
 
-export function downsort(response,name){
-    const ret=response.sort((a,b)=>(b[name].localeCompare(a[name])));
-    return ret;
-}
+app.use("/",HistoryRouter)
 
-app.get("/history", async (req,res) =>{
-    res.header("Access-Control-Allow-Origin", "*");
-    try {
-        const apiResponse = await axios.get(
-          "https://my.api.mockaroo.com/history?key=b402e590"
-        )
-    
-        const responseData = apiResponse.data
+app.use("/",StatsRouter)
 
-        responseData=downsort(responseData,"time");
-    
-        // send the data in the response
-        res.json(responseData)
-      } catch (err) {
-        // send an error JSON object back to the browser
-        res.json(err)
-      }
-})
 
-app.get("/stats", (req,res) =>{
-    res.header("Access-Control-Allow-Origin", "*");
-    const response=axios
-    .get("https://my.api.mockaroo.com/stats?key=d685d830")
-    .then(apiResponse => res.json(apiResponse.data))
-    .catch (err => 
-        res.json({
-          success: false,
-          error: err,
-        })
-    )
-})
 
-export default app; 
+module.exports=app
