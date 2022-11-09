@@ -87,7 +87,6 @@ const Home = (props) => {
       </Carousel>
       <Timer currentDate={date} />
       <br />
-      <br />
       <Card container className="preview" variant="outlined">
         <CardActions className="action">
           <Button className="info" size="small" color="secondary" href="/stats">

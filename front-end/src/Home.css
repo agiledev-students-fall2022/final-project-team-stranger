@@ -27,3 +27,9 @@
   text-overflow: ellipsis;
   overflow: hidden !important;
 }
+
+@media (max-height: 720px) {
+  .preview {
+    height: 100px;
+  }
+}
