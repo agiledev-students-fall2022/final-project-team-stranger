@@ -1,4 +1,4 @@
-import axios from "axios"; 
+const axios = require("axios"); 
 
 // Send Back Results 
 const makePostRequest = async (url, data) =>{
@@ -27,6 +27,6 @@ const makeGetRequest = async (url) => {
     
 }
 
-export {
+module.exports = {
     makePostRequest, makeGetRequest
 }

@@ -1,15 +1,14 @@
-import * as dotenv from 'dotenv'; 
+const dotenv = require("dotenv");
 dotenv.config({
-    silent: true 
-}); 
-
-import express from "express"; 
-import morgan from "morgan";
-import mongoose from "mongoose";
-import User from "./models/User.js"; 
-import Message from "./models/Message.js";
-
-import settingsRouter from './logic/SettingsRouter.js';
+  silent: true,
+});
+const express = require("express");
+const morgan = require("morgan");
+const mongoose = require("mongoose");
+// const User = require("./models/User.js");
+// const Message = require("./models/Message.js");
+const cors = require("cors");
+const settingsRouter = require("./logic/settingsRouter.js");
 
 // FOR LATER - connect to database
 // mongoose
@@ -17,10 +16,11 @@ import settingsRouter from './logic/SettingsRouter.js';
 //   .then(data => console.log(`Connected to MongoDB`))
 //   .catch(err => console.error(`Failed to connect to MongoDB: ${err}`))
 
-const app = express(); 
-// app.use(morgan('dev', { skip: (req, res) => process.env.NODE_ENV === 'test' })) // log all incoming requests
-app.use(express.json()) // decode JSON-formatted incoming POST data
-app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
+const app = express();
+app.use(morgan("dev", { skip: (req, res) => process.env.NODE_ENV === "test" })); // log all incoming requests
+app.use(express.json()); // decode JSON-formatted incoming POST data
+app.use(express.urlencoded({ extended: true })); // decode url-encoded incoming POST data
+app.use(cors());
 
 app.use("/", settingsRouter); 
 
@@ -33,4 +33,4 @@ app.get("/", (req, res) => {
 })
 
 
-export default app; 
+module.exports = app; 
