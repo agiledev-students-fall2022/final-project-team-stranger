@@ -6,7 +6,7 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
 
-const url = "http://localhost:3000";
+const url = `${process.env.REACT_APP_BACKEND_API_URL}`;
 
 const SendMessage = (props) => {
   const [message, setMessage] = useState("");

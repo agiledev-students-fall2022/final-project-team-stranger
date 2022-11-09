@@ -14,9 +14,16 @@
 
 .info {
   padding: 0;
-  margin-left: 80% !important;
+  /* margin-left: 70% !important; */
+  margin: auto;
 }
 
 .content {
-  padding-top: 0 !important;
+  padding-top: 1.5em !important;
+}
+
+.LastMessage {
+  height: 2em;
+  text-overflow: ellipsis;
+  overflow: hidden !important;
 }

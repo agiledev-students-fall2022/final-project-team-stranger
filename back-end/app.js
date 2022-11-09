@@ -1,15 +1,14 @@
-import * as dotenv from "dotenv";
+const dotenv = require("dotenv");
 dotenv.config({
   silent: true,
 });
-
-import express from "express";
-import morgan from "morgan";
-import mongoose from "mongoose";
-import User from "./models/User.js";
-import Message from "./models/Message.js";
-import cors from "cors";
-import messageRouter from "./logic/MessageRouter.js";
+const express = require("express");
+const morgan = require("morgan");
+const mongoose = require("mongoose");
+// const User = require("./models/User.js");
+// const Message = require("./models/Message.js");
+const cors = require("cors");
+const messageRouter = require("./logic/MessageRouter.js");
 // FOR LATER - connect to database
 // mongoose
 //   .connect(`${process.env.DB_CONNECTION_STRING}`)
@@ -31,5 +30,4 @@ app.get("/", (req, res) => {
     Your .env file is currently ${process.env.TEST ? "" : "NOT"} setup properly!
     `);
 });
-
-export default app;
+module.exports = app;

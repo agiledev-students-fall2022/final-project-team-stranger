@@ -13,13 +13,16 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 
 const Home = (props) => {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    "Fetching warmth...",
+    "Fetching warmth...",
+    "Fetching warmth...",
+  ]);
   const [views, setViews] = useState(0);
-  const [lastMessage, setLastMessage] = useState("");
+  const [lastMessage, setLastMessage] = useState();
   const [error, setError] = useState("");
   const [date, setDate] = useState(new Date().getDate());
-  const url = "http://localhost:3000";
-  //const url = "https://my.api.mockaroo.com/messages?key=d685d830";
+  const url = `${process.env.REACT_APP_BACKEND_API_URL}`;
 
   const fetchMessages = () => {
     axios
@@ -53,8 +56,6 @@ const Home = (props) => {
         console.error(error);
       })
       .finally(() => {
-        // the response has been received, so remove the loading icon
-        //setLoaded(true)
         console.log("Content successfully loaded.");
       });
   };
@@ -90,12 +91,12 @@ const Home = (props) => {
       <Card container className="preview" variant="outlined">
         <CardActions className="action">
           <Button className="info" size="small" color="secondary" href="/stats">
-            More
+            More Stats
           </Button>
         </CardActions>
         <CardContent className="content">
-          <Typography color="primary">Highest Views Gained</Typography>
-          <Typography color="secondary">{views}</Typography>
+          <Typography color="primary.dark">Your total influence</Typography>
+          <Typography color="primary.light">{views}</Typography>
         </CardContent>
       </Card>
       <Card className="preview" variant="outlined">
@@ -106,12 +107,14 @@ const Home = (props) => {
             color="secondary"
             href="/history"
           >
-            More
+            More History
           </Button>
         </CardActions>
         <CardContent className="content">
-          <Typography color="primary">Previous Highlights </Typography>
-          <Typography color="secondary">{lastMessage}</Typography>
+          <Typography color="primary.dark">Previous Highlights </Typography>
+          <Typography noWrap color="primary.light" className="LastMessage">
+            {lastMessage}
+          </Typography>
         </CardContent>
       </Card>
     </div>
