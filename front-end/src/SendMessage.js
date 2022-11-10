@@ -4,10 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import SendIcon from "@mui/icons-material/Send";
+import axios from "axios";
+
+const url = `${process.env.REACT_APP_BACKEND_API_URL}`;
 
 const SendMessage = (props) => {
   const [message, setMessage] = useState("");
-  //const [err, setErr] = useState(false);
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -16,8 +19,22 @@ const SendMessage = (props) => {
     if (message.trim() === "") {
       alert("Message cannot be empty.");
     } else {
-      alert(`Your message:\n${message}\nis successfully sent!`);
-      navigate("/"); //redirect to home
+      axios
+        // post new message to server
+        .post(`${url}/send-message`, {
+          message: message,
+        })
+        .then((response) => {
+          alert(
+            `Your message:\n${response.data.message}\nis successfully sent!`
+          );
+          navigate("/"); //redirect to home
+        })
+        .catch((err) => {
+          setError(`error:${err}`);
+          alert(error);
+        });
+      setMessage("");
     }
   };
 
