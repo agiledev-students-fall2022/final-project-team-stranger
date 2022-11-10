@@ -13,10 +13,9 @@ import { useState, useEffect } from "react";
 
 const History = (props) => {
   const [data, setData] = useState([]); 
-  const api="http://localhost:3000/history"
   useEffect(() => {
     async function fetchData() {
-      const result = await axios(api);
+      const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/history`);;
       setData(result.data);
     }
     fetchData();
