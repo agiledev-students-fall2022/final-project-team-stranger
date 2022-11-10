@@ -1,18 +1,21 @@
 
-const express=require("express")
-const morgan=require("morgan")
-const mongoose =require ("mongoose");
-const User = require("./models/User.js"); 
-const Message = require("./models/Message.js");
-const HistoryRouter =require( './logic/HistoryFunction.js');
-const StatsRouter =require('./logic/StatsFunction.js');
+const express = require("express")
+const morgan = require("morgan")
+const HistoryRouter = require( './logic/HistoryFunction.js');
+const StatsRouter = require('./logic/StatsFunction.js');
+const settingsRouter = require("./logic/settingsRouter.js");
+const messageRouter = require("./logic/MessageRouter.js");
+const cors = require("cors");
 
 const dotenv = require("dotenv");
 dotenv.config({
   silent: true,
 });
-const cors = require("cors");
-const messageRouter = require("./logic/MessageRouter.js");
+
+// const User = require("./models/User.js");
+// const Message = require("./models/Message.js");
+// const mongoose = require ("mongoose");
+
 // FOR LATER - connect to database
 // mongoose
 //   .connect(`${process.env.DB_CONNECTION_STRING}`)
@@ -25,11 +28,10 @@ app.use(express.json()); // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })); // decode url-encoded incoming POST data
 app.use(cors());
 
+app.use("/", settingsRouter); 
 app.use("/", messageRouter);
-
-app.use("/",HistoryRouter)
-
-app.use("/",StatsRouter)
+app.use("/", HistoryRouter)
+app.use("/", StatsRouter)
 
 app.get("/", (req, res) => {
   res.send(`
@@ -39,8 +41,4 @@ app.get("/", (req, res) => {
     `); 
 })
 
-
-
-
-
-module.exports=app
+module.exports = app; 

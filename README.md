@@ -53,9 +53,8 @@ Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
   - Copy the values from `.example.env` into the file you created above, changing the environment variables as necessary.
   - To run the application, run `npx nodemon server.js`
 - To run the backend tests
-  - Navigate to `/backend/tests`
-  - Choose the test you want to execute (`demo.js`)
-  - Execute your chosen test file using `npm test <filename>`
+  - Navigate to `/backend/`
+  - Execute all tests by running `npm test`
 - To use the database: PLACEHOLDER
 
 

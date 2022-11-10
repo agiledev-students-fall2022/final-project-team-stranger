@@ -16,13 +16,9 @@ HistoryRouter.get("/history", async (req,res) =>{
         const apiResponse = await axios.get(
           "https://my.api.mockaroo.com/history?key=b402e590"
         )
-        // console.log(apiResponse.data)
 
-        let responseData=apiResponse.data
+        let responseData = apiResponse.data
         responseData.sort(downsort("time"))
-
-        console.log("Hello World");
-        // console.log(responseData)
     
         // send the data in the response
         res.json(responseData)

@@ -19,14 +19,13 @@ const Stats = (props) => {
 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/stats`);;
+      const result = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/stats`);
       setData(result.data);
     }
     fetchData();
   }, []);
 
 
-  console.log(data)
   function downSort(propertyName) {
     if ((typeof data[0][propertyName]) != "number") {
       return function(object1, object2) {
@@ -53,7 +52,7 @@ const Stats = (props) => {
   }
 
 
-  let dataList=(data.map((item,index)=>{
+  let dataList = (data.map((item,index)=>{
     return(
       <MessageBlock key={index} {...item} />
     )

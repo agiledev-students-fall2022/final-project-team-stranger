@@ -15,7 +15,7 @@ const History = (props) => {
   const [data, setData] = useState([]); 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/history`);;
+      const result = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/history`);
       setData(result.data);
     }
     fetchData();

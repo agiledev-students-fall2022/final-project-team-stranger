@@ -7,17 +7,18 @@ import {
 
 const Settings = (props) => {
   const [formValues, setFormValues] = useState({});
-  const url = "https://my.api.mockaroo.com/user?key=d685d830"; 
   
+  // Default values - get settings for the user 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios(url);
+      const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/settings/get`);
       setFormValues(result.data);
     }
     fetchData();
   }, []);
 
 
+  // On change, update the formValues 
   const onChange = e => {
     const {name, value} = e.target; 
     setFormValues({
@@ -44,9 +45,17 @@ const Settings = (props) => {
     }
   }
 
+  // Handle Submission 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(formValues); 
+
+    // async function to fetch data from the backend
+    async function sendRequest(url, data) {
+      const result = await axios.post(url, data);
+      window.location = "/"; 
+    }
+
+    sendRequest(`${process.env.REACT_APP_BACKEND_API_URL}/settings/update/`, formValues); 
   }
 
   return <Grid className="settingsPage" align="center">

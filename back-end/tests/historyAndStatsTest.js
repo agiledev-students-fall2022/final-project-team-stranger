@@ -5,7 +5,7 @@ const chaiHttp = require('chai-http');
 const should = chai.should();
 chai.use(chaiHttp);
 
-describe("Demo test for the History", () => {
+describe("GET method for /history", () => {
     it("Should respond with 200!", done => {
         chai
         .request(app)
@@ -37,7 +37,7 @@ describe("Demo test for the History", () => {
         })
     })
 })
-describe("Demo test for the Stats", () => {
+describe("GET method for /stats", () => {
     it("Should respond with 200!", done => {
         chai
         .request(app)
