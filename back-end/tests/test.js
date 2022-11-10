@@ -1,6 +1,6 @@
 const chai = require('chai');
 const expect=require("chai")
-const app=require("/Users/youyuzhu/Desktop/agile/final-project-team-stranger/back-end/app.js")
+const app=require("../app")
 const chaiHttp = require('chai-http');
 const should = chai.should();
 chai.use(chaiHttp);

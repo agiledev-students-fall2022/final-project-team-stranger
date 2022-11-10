@@ -5,7 +5,7 @@ const axios=require("axios")
 StatsRouter.get("/stats", (req,res) =>{
     res.header("Access-Control-Allow-Origin", "*");
     const response=axios
-    .get("https://my.api.mockaroo.com/stats?key=d685d830")
+    .get("https://my.api.mockaroo.com/stats?key=b402e590")
     .then(apiResponse => res.json(apiResponse.data))
     .catch (err => 
         res.json({
