@@ -38,7 +38,7 @@ const History = (props) => {
         <Typography variant="h8" className="recentMessages">Recent Messages</Typography>
       </Box>
       <Box>
-        {data.map((item,index)=> (
+        {data.slice(0,15).map((item,index)=> (
           <MessageBlock key={index} text={item.text} score={item.score} time={item.time} page="history" />
         ))}
       </Box>
