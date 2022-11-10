@@ -41,23 +41,22 @@ Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
 
 ## Project Build and Run Instructions
 
-This section will be completed as we build out the front-end and backend.
 
 - To run the frontend
   - Please navigate to `/frontend`
   - Install all dependencies using `npm install`
   - Run the application using `npm start`
 - To run the backend:
-  - Please navigate toe `/backend`
+  - Please navigate to `/backend`
   - Install all dependencies using `npm install`
   - Create a file with the name `.env`
   - Copy the values from `.example.env` into the file you created above, changing the environment variables as necessary.
-  - To run the application, run `nodemon server.js`
+  - To run the application, run `npx nodemon server.js`
 - To run the backend tests
-  - Navigate to `/backend/tests`
-  - Choose the test you want to execute (`demo.js`)
-  - Execute your chosen test file using `npx mocha <filename>`
+  - Navigate to `/backend/`
+  - Execute all tests by running `npm test`
 - To use the database: PLACEHOLDER
+
 
 ## Roles
 

@@ -13,11 +13,9 @@ import { useState, useEffect } from "react";
 
 const History = (props) => {
   const [data, setData] = useState([]); 
-  const url = "https://my.api.mockaroo.com/history?key=d685d830"; 
-
   useEffect(() => {
     async function fetchData() {
-      const result = await axios(url);
+      const result = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/history`);
       setData(result.data);
     }
     fetchData();

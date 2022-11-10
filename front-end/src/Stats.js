@@ -16,11 +16,10 @@ import { useState, useEffect } from "react";
 
 const Stats = (props) => {
   const [data, setData] = useState([]); 
-  const url = "https://my.api.mockaroo.com/stats?key=d685d830"; 
 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios(url);
+      const result = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/stats`);
       setData(result.data);
     }
     fetchData();
@@ -53,7 +52,7 @@ const Stats = (props) => {
   }
 
 
-  let dataList=(data.map((item,index)=>{
+  let dataList = (data.map((item,index)=>{
     return(
       <MessageBlock key={index} {...item} />
     )
