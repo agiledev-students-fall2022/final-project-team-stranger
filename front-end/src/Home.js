@@ -12,17 +12,63 @@ import {
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-
 const Home = (props) => {
-  const [messages, setMessages] = useState([]); 
-  const url = "https://my.api.mockaroo.com/messages?key=d685d830";
+  const [messages, setMessages] = useState([
+    "Fetching warmth...",
+    "Fetching warmth...",
+    "Fetching warmth...",
+  ]);
+  const [views, setViews] = useState(0);
+  const [lastMessage, setLastMessage] = useState();
+  const [error, setError] = useState("");
+  const [date, setDate] = useState(new Date().getDate());
+  const url = `${process.env.REACT_APP_BACKEND_API_URL}`;
+
+  const fetchMessages = () => {
+    axios
+      .get(`${url}/messages`)
+      .then((response) => {
+        // axios bundles up all response data in response.data property
+        const messages = response.data.messages;
+        setMessages(messages);
+      })
+      .catch((err) => {
+        setError(err);
+        console.error(error);
+      })
+      .finally(() => {
+        // the response has been received, so remove the loading icon
+        //setLoaded(true)
+        console.log("Content successfully loaded.");
+      });
+  };
+
+  const fetchSummary = () => {
+    axios
+      .get(`${url}/summary`)
+      .then((response) => {
+        // axios bundles up all response data in response.data property
+        setViews(response.data.view);
+        setLastMessage(response.data.lastMessage);
+      })
+      .catch((err) => {
+        setError(err);
+        console.error(error);
+      })
+      .finally(() => {
+        console.log("Content successfully loaded.");
+      });
+  };
 
   useEffect(() => {
-    async function fetchData() {
-      const result = await axios(url);
-      setMessages(result.data);
+    fetchMessages();
+    fetchSummary();
+    //update when date changes
+    let currentDate;
+    if ((currentDate = new Date().getDate()) != date) {
+      fetchMessages();
+      setDate(currentDate);
     }
-    fetchData();
   }, []);
 
   return (
@@ -39,18 +85,17 @@ const Home = (props) => {
           <Message key={i} message={msg} />
         ))}
       </Carousel>
-      <Timer />
-      <br />
+      <Timer currentDate={date} />
       <br />
       <Card container className="preview" variant="outlined">
         <CardActions className="action">
           <Button className="info" size="small" color="secondary" href="/stats">
-            More
+            More Stats
           </Button>
         </CardActions>
         <CardContent className="content">
-          <Typography color="primary">Total Views Gained</Typography>
-          <Typography color="secondary">{props.views}</Typography>
+          <Typography color="primary.dark">Your total influence</Typography>
+          <Typography color="primary.light">{views}</Typography>
         </CardContent>
       </Card>
       <Card className="preview" variant="outlined">
@@ -61,12 +106,14 @@ const Home = (props) => {
             color="secondary"
             href="/history"
           >
-            More
+            More History
           </Button>
         </CardActions>
         <CardContent className="content">
-          <Typography color="primary">Previous Highlights </Typography>
-          <Typography color="secondary">{props.lastMessage}</Typography>
+          <Typography color="primary.dark">Previous Highlights </Typography>
+          <Typography noWrap color="primary.light" className="LastMessage">
+            {lastMessage}
+          </Typography>
         </CardContent>
       </Card>
     </div>

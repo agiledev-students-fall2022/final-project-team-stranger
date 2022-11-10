@@ -18,10 +18,10 @@
 @media (max-height: 720px) {
   .message {
     display: "flex";
-    max-width: 75%;
+    max-width: 70%;
     margin: 10px auto;
     position: relative;
-    height: 200px;
+    height: 175px;
     overflow: hidden;
     padding: 20px;
   }
