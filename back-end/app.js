@@ -6,21 +6,14 @@ const StatsRouter = require('./logic/StatsFunction.js');
 const settingsRouter = require("./logic/settingsRouter.js");
 const messageRouter = require("./logic/MessageRouter.js");
 const cors = require("cors");
+const mongoose = require ("mongoose");
+const db = require("./models/db.js")
 
 const dotenv = require("dotenv");
 dotenv.config({
   silent: true,
 });
 
-// const User = require("./models/User.js");
-// const Message = require("./models/Message.js");
-// const mongoose = require ("mongoose");
-
-// FOR LATER - connect to database
-// mongoose
-//   .connect(`${process.env.DB_CONNECTION_STRING}`)
-//   .then(data => console.log(`Connected to MongoDB`))
-//   .catch(err => console.error(`Failed to connect to MongoDB: ${err}`))
 
 const app = express();
 app.use(morgan("dev", { skip: (req, res) => process.env.NODE_ENV === "test" })); // log all incoming requests
@@ -40,5 +33,6 @@ app.get("/", (req, res) => {
     Your .env file is currently ${process.env.TEST ? '' : 'NOT'} setup properly!
     `); 
 })
+
 
 module.exports = app; 
