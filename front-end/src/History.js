@@ -11,11 +11,12 @@ import MessageBlock from "./components/MessageItem.js";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+const email="yz6790@nyu.edu"
 const History = (props) => {
   const [data, setData] = useState([]); 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/history`);
+      const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/history`,{ email: email });
       setData(result.data);
     }
     fetchData();
@@ -38,8 +39,8 @@ const History = (props) => {
         <Typography variant="h8" className="recentMessages">Recent Messages</Typography>
       </Box>
       <Box>
-        {data.map((item,index)=> (
-          <MessageBlock key={index} text={item.text} score={item.score} time={item.time} page="history" />
+        {data.slice(0,15).map((item,index)=> (
+          <MessageBlock key={index} text={item.content} score={item.frequency} time={item.createdAt} page="history" />
         ))}
       </Box>
     </div>

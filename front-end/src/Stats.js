@@ -16,10 +16,10 @@ import { useState, useEffect } from "react";
 
 const Stats = (props) => {
   const [data, setData] = useState([]); 
-
+  const em="yz6790@nyu.edu"
   useEffect(() => {
     async function fetchData() {
-      const result = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/stats`);
+      const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/stats`,{email:em});
       setData(result.data);
     }
     fetchData();
@@ -50,14 +50,6 @@ const Stats = (props) => {
     setData(newData)
     console.log(data)
   }
-
-
-  let dataList = (data.map((item,index)=>{
-    return(
-      <MessageBlock key={index} {...item} />
-    )
-  }))
-
   
   let inf = 0;
 
@@ -90,7 +82,7 @@ const Stats = (props) => {
       <Box>
 
         {data.map((item,index)=> (
-          <MessageBlock key={index} text={item.text} score={item.score} time={item.time} page="stats" />
+          <MessageBlock key={index} text={item.content} score={item.frequency} time={item.createdAt} page="stats" />
         ))}
 
       </Box>
