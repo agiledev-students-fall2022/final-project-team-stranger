@@ -68,9 +68,9 @@ const Stats = (props) => {
         <FormControl className="SortChoices">
           <InputLabel id="Select" className="default_text">Sorted By</InputLabel>
           <Select label="Sorted By" onChange={(e)=>handleClick(e)} className="sort_icon" defaultValue={"score"}>
-            <MenuItem value="score">Impact</MenuItem>
-            <MenuItem value="text" >Text</MenuItem>
-            <MenuItem value="time" >Time</MenuItem>
+            <MenuItem value="frequency">Impact</MenuItem>
+            <MenuItem value="content" >Text</MenuItem>
+            <MenuItem value="createdAt" >Time</MenuItem>
           </Select>
         </FormControl>
       
