@@ -4,6 +4,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import LogoIcon from "./components/LogoIcon";
+import axios from "axios"; 
 
 const initialValues = {
   "email" : "", 
@@ -20,9 +21,23 @@ const SignIn = (props) => {
     });
   };
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     console.log(formValues); 
+
+    try {
+      const res = await (await axios.post("http://localhost:4000/login", formValues)).data
+      if (!res.success) {
+        alert(res.message)
+        setFormValues(initialValues)
+      } else {
+        localStorage.setItem("user_token", res.token)
+        console.log("Credentials are correct!")
+      }
+    } catch(err) {
+      alert("Incorrect Credentials!")
+      setFormValues(initialValues);
+    }
   }
   
   return <Grid className="signInPage" align="center">

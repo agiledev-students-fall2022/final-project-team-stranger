@@ -1,7 +1,7 @@
 const mongoose =require( "mongoose");
 const bcrypt = require("bcrypt"); 
 
-const User = mongoose.Schema(
+const User = new mongoose.Schema(
     {
         username: {
             type: String, 
@@ -48,5 +48,5 @@ User.methods.isValidPassword = (password) => {
     return compare; 
 }
 
-mongoose.model("User", User); 
-module.exports=User
+mongoose.model("User", User);
+module.exports = User
