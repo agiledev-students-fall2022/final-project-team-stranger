@@ -1,8 +1,10 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const axios = require("axios");
-// import Message from "../models/Message.js";
-// import User from "../models/User.js";
+const mongoose = require("mongoose");
+const db = require("../models/db.js");
+const User = mongoose.model("User");
+const Message = mongoose.model("Message");
 
 // let messages = [
 //   "When my heart feels lonely, your spirit swiftly bonds me with love. You are my world.",
@@ -16,14 +18,36 @@ const messageRouter = express.Router();
 messageRouter.post("/send-message", async (req, res) => {
   // try to save the message to the database
   try {
-    // const message = await Message.create({
-    //   created_by: "0", //user ID
-    //   content: req.body.message,
-    //   frequency: 0,
-    // });
+    //const cur_user = await User.findOne({ email: req.body.email });
+    const cur_user = await User.findOne({ email: "yz6790@nyu.edu" });
+    const message = new Message({
+      created_by: cur_user._id, //user ID
+      content: req.body.message,
+      frequency: 0,
+    });
+    message.save((err) => {
+      if (err) {
+        console.error(err);
+        throw err;
+      } else {
+        console.log("Success!");
+      }
+    });
+    cur_user
+      .update({
+        $push: { currentMessages: message._id },
+      })
+      .exec((err, data) => {
+        if (err) {
+          console.error(err);
+          throw err;
+        } else {
+          console.log(data);
+        }
+      });
     return res.json({
       message: req.body.message, // return the message we just saved
-      status: "all good",
+      status: "New message saved to the database",
     });
   } catch (err) {
     console.error(err);
