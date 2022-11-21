@@ -1,38 +1,44 @@
 const express = require("express");
 const nt = require("./SendRequest.js"); 
 
+const mongoose = require("mongoose"); 
+const UserModel = mongoose.model("User")
 const settingsRouter = express.Router();
+
 settingsRouter.post("/settings/update", (req, res) => {
     // Database Interaction Here 
-    const data = req.body; 
-    console.log(req.user)
+    const newData = {
+        "username" : req.body.username.trim(), 
+        "email" : req.body.email.trim(), 
+        "passwordHash" : req.body.password.trim() === "" ? req.user.passwordHash : req.body.password.trim(),
+    }
 
-    // Mocked Database Interaction with Mckaroo
-    const result = nt.makePostRequest("https://my.api.mockaroo.com/settings-update?key=d685d830")
-    res.status(200).send({"msg" : "Done!"})
+    UserModel.findOneAndUpdate({_id: req.user._id}, {
+        $set : newData
+    }, (err, data) => {
+        if (err) {
+            console.log("Updating error!", err); 
+            res.status(400).send({
+                success: false, 
+                message: "Error in updating your account!"
+            })
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Saved details!"
+        })
+    })
 })
 
 settingsRouter.post("/settings/get", (req, res) => {
-    // Database Interaction here 
-    const data = req.body; 
-
-    // Mocked Database Interaction 
-    const result = nt.makeGetRequest("https://my.api.mockaroo.com/user?key=d685d830"); 
-
-    // If we exceed the 200 daily request limit, send back some sample data
-    if (!result.data) {
-        res.status(200).send({
-            username: "John Smith", 
-            email: "demo@gmail.com", 
-            password: "",
-            confirmPassword: "", 
-            passwordError: ""
-          })
-    }
-    // Else, send back the real data 
-    else {
-        res.status(200).send(result.data); 
-    }
+    return res.status(200).json({
+        username: req.user.username, 
+        email: req.user.email, 
+        password: "", 
+        confirmPassword: "", 
+        passwordError: ""
+    })
 })
 
 module.exports = settingsRouter; 

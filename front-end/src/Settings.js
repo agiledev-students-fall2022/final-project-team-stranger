@@ -60,9 +60,17 @@ const Settings = (props) => {
     event.preventDefault();
 
     // async function to fetch data from the backend
-    async function sendRequest(url, data) {
-      const result = await axios.post(url, data);
-      window.location = "/"; 
+    async function sendRequest() {
+      try {
+        const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/settings/update`, formValues, {
+          headers: { Authorization: `JWT ${jwtToken}`} 
+        });
+      
+        console.log(result.data)
+        setLoginStatus(true); 
+      } catch(err) {
+        setLoginStatus(err.response.data.success)
+      }
     }
 
     sendRequest(`${process.env.REACT_APP_BACKEND_API_URL}/settings/update/`, formValues); 
