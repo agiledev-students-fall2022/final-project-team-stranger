@@ -10,7 +10,7 @@ const url = `${process.env.REACT_APP_BACKEND_API_URL}`;
 
 const SendMessage = (props) => {
   const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
+  //const [error, setError] = useState("");
 
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -30,11 +30,14 @@ const SendMessage = (props) => {
           );
           navigate("/"); //redirect to home
         })
-        .catch((err) => {
-          setError(`error:${err}`);
-          alert(error);
+        .catch((error) => {
+          if (error.response) {
+            alert(error.response.data.status);
+          } else {
+            alert(error);
+          }
         });
-      setMessage("");
+      //setMessage("");
     }
   };
 
