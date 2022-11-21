@@ -10,12 +10,11 @@ jwtOptions.secretOrKey = "SAMPLE_SECRET"
 
 // JWT Strategy  
 const jwtStrategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
-  console.log("JWT payload received", jwt_payload) // debugging
+  // console.log("JWT payload received", jwt_payload) // debugging
 
   // Find User Within DB 
   const UserFinder = mongoose.model("User")
   const user = UserFinder.findOne({"_id" : jwt_payload._id}).exec((err, data) => {
-    console.log("Finder: ", err, data); 
     if (err) {
         next(null, false)
     } else {

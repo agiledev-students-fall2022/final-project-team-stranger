@@ -15,6 +15,7 @@ import {
   createTheme,
 } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
+import PrivateRoute from "./components/PrivateRoute.js";
 
 const theme = createTheme({
   palette: {

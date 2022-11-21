@@ -1,11 +1,11 @@
 const express = require("express");
 const nt = require("./SendRequest.js"); 
-// import * as nt from "./SendRequest.js";
 
 const settingsRouter = express.Router();
 settingsRouter.post("/settings/update", (req, res) => {
     // Database Interaction Here 
     const data = req.body; 
+    console.log(req.user)
 
     // Mocked Database Interaction with Mckaroo
     const result = nt.makePostRequest("https://my.api.mockaroo.com/settings-update?key=d685d830")

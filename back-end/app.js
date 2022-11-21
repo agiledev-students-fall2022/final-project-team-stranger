@@ -25,6 +25,7 @@ passport.use("strangerLogin", jwtStrategy)
 
 // Routers 
 const authRouter = require("./logic/authRouter.js"); 
+const privateRoutes = require("./logic/privateRoutes.js"); 
 const HistoryRouter = require( './logic/HistoryFunction.js');
 const StatsRouter = require('./logic/StatsFunction.js');
 const settingsRouter = require("./logic/settingsRouter.js");
@@ -37,9 +38,13 @@ app.use(express.urlencoded({ extended: true })); // decode url-encoded incoming 
 app.use(cors({ origin: process.env.FRONT_END_DOMAIN, credentials: true })) // allow incoming requests only from a "trusted" host
 app.use(cookieParser()) // useful middleware for dealing with cookies
 
-// Register Routes 
+// Register Auth/Protected Routes 
 app.use("/", authRouter); 
-app.use("/", settingsRouter); 
+app.use("/", passport.authenticate("strangerLogin", {
+  session: false, failureRedirect: '/authFail'}), privateRoutes);
+
+// Register All Other Routes 
+app.use("/", settingsRouter);  
 app.use("/", messageRouter);
 app.use("/", HistoryRouter)
 app.use("/", StatsRouter)

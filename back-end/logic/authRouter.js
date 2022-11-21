@@ -11,8 +11,6 @@ authRouter.post("/login", (req, res, next) => {
     const email = req.body.email
     const password = req.body.password
 
-    console.log("Entred data", email, password)
-
     // no username or password 
     if (!email || !password) {
         res.status(401)
@@ -21,8 +19,7 @@ authRouter.post("/login", (req, res, next) => {
 
     // find user 
     const UserFinder = mongoose.model("User"); 
-    UserFinder.findOne({"email" : email}).exec((err, data) => {
-        console.log(data); 
+    UserFinder.findOne({"email" : email}).exec((err, data) => { 
         if (err) {
             res.status(401)
                 .json({ success: false, message: `User not found.`})
@@ -41,5 +38,12 @@ authRouter.post("/login", (req, res, next) => {
 
 }); 
 
+// Add Demo Protected Route 
+authRouter.get("/authFail", (req, res) => {
+    res.status(400).json({
+        success: false,
+        message: "Authentication failed."
+    })
+})
 
 module.exports = authRouter; 

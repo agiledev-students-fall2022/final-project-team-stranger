@@ -26,13 +26,13 @@ const SignIn = (props) => {
     console.log(formValues); 
 
     try {
-      const res = await (await axios.post("http://localhost:4000/login", formValues)).data
+      const res = await (await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/login`, formValues)).data
       if (!res.success) {
         alert(res.message)
         setFormValues(initialValues)
       } else {
         localStorage.setItem("user_token", res.token)
-        console.log("Credentials are correct!")
+        window.location = "/"
       }
     } catch(err) {
       alert("Incorrect Credentials!")
