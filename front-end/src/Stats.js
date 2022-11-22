@@ -16,6 +16,7 @@ import { useState, useEffect } from "react";
 
 const Stats = (props) => {
   const [data, setData] = useState([]); 
+  const [inf, setInf]=useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -23,6 +24,14 @@ const Stats = (props) => {
       setData(result.data);
     }
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    async function fetchSummary() {
+      const result = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/summary`);
+      setInf(result.data.view);
+    }
+    fetchSummary();
   }, []);
 
 
@@ -59,7 +68,6 @@ const Stats = (props) => {
   }))
 
   
-  let inf = 0;
 
   
   return(
