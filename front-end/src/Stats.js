@@ -17,12 +17,22 @@ import { useState, useEffect } from "react";
 const Stats = (props) => {
   const [data, setData] = useState([]); 
   const em="yz6790@nyu.edu"
+  const [inf, setInf]=useState([]);
+
   useEffect(() => {
     async function fetchData() {
       const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/stats`,{email:em});
       setData(result.data);
     }
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    async function fetchSummary() {
+      const result = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/summary`);
+      setInf(result.data.view);
+    }
+    fetchSummary();
   }, []);
 
 
@@ -51,7 +61,6 @@ const Stats = (props) => {
     console.log(data)
   }
   
-  let inf = 0;
 
   
   return(
