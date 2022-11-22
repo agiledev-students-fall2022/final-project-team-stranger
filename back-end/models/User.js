@@ -1,6 +1,7 @@
 const mongoose =require( "mongoose");
+const bcrypt = require("bcrypt"); 
 
-const User = mongoose.Schema(
+const User = new mongoose.Schema(
     {
         username: {
             type: String, 
@@ -32,7 +33,14 @@ const User = mongoose.Schema(
                 type: mongoose.Schema.Types.ObjectId, 
                 ref : "Message"
             }
+        ], 
+        lastRefreshDate: [
+            {
+                type: mongoose.Schema.Types.Date, 
+                required: true 
+            }
         ]
+
     }, 
 
     // refer to https://mongoosejs.com/docs/timestamps.html
@@ -41,5 +49,11 @@ const User = mongoose.Schema(
     }
 )
 
-mongoose.model("User", User); 
-module.exports=User
+User.methods.isValidPassword = (password) => {
+    const user = this; 
+    const compare = bcrypt.compareSync(password, user.passwordHash); 
+    return compare; 
+}
+
+mongoose.model("User", User);
+module.exports = User

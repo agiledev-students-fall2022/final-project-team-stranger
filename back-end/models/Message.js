@@ -1,6 +1,6 @@
-const mongoose = require ("mongoose");
+const mongoose = require("mongoose");
 
-const Message = mongoose.Schema(
+const Message = new mongoose.Schema(
     {
         // who created the message? 
         created_by: {
@@ -28,6 +28,5 @@ const Message = mongoose.Schema(
     }
 )
 
-
-mongoose.model("Message", Message)
-module.exports=Message
+mongoose.model("Message", Message); 
+module.exports = Message

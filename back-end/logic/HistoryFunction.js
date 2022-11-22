@@ -1,7 +1,7 @@
 
-const express=require("express")
+const express = require("express")
 const HistoryRouter = express.Router();
-const axios=require("axios")
+const axios = require("axios")
 
 function downsort(propertyName) {
       return function(object1, object2) {

@@ -4,15 +4,25 @@ import { useState, useEffect } from "react";
 import { 
   Grid, Paper, TextField, Typography, FormControl, Button, Link
 } from "@mui/material";
+import { Navigate } from "react-router-dom";
 
 const Settings = (props) => {
   const [formValues, setFormValues] = useState({});
+  const [loginStatus, setLoginStatus] = useState(undefined); 
+  const jwtToken = localStorage.getItem("user_token")  
   
   // Default values - get settings for the user 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/settings/get`);
-      setFormValues(result.data);
+      try {
+        const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/settings/get`, {}, {
+          headers: { Authorization: `JWT ${jwtToken}`} 
+        });
+        setFormValues(result.data);
+        setLoginStatus(true); 
+      } catch(err) {
+        setLoginStatus(err.response.data.success)
+      }
     }
     fetchData();
   }, []);
@@ -50,15 +60,23 @@ const Settings = (props) => {
     event.preventDefault();
 
     // async function to fetch data from the backend
-    async function sendRequest(url, data) {
-      const result = await axios.post(url, data);
-      window.location = "/"; 
+    async function sendRequest() {
+      try {
+        const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/settings/update`, formValues, {
+          headers: { Authorization: `JWT ${jwtToken}`} 
+        });
+      
+        setLoginStatus(true); 
+        window.location = "/"
+      } catch(err) {
+        setLoginStatus(err.response.data.success)
+      }
     }
 
     sendRequest(`${process.env.REACT_APP_BACKEND_API_URL}/settings/update/`, formValues); 
   }
 
-  return <Grid className="settingsPage" align="center">
+  const elem = <Grid className="settingsPage" align="center">
     <Paper elevation={10} className="pageWrapper">
       <Grid className="settingsPageHeader">
         <Typography variant="h4">Settings<b/></Typography>
@@ -87,9 +105,11 @@ const Settings = (props) => {
           </Button>
         </FormControl>
       </form>
-
     </Paper>
   </Grid>
+
+  if (loginStatus === undefined) return <div>Loading...</div>
+  else return loginStatus ? elem : <Navigate to="/sign-in" replace/>
 };
 
 export default Settings;
