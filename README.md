@@ -44,6 +44,8 @@ Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
 - To run the frontend
   - Please navigate to `/frontend`
   - Install all dependencies using `npm install`
+  - Create a file with the name `.env`
+  - Copy the values from `.example.env` into the file you created above, changing the environment variables as necessary.
   - Run the application using `npm start`
 - To run the backend:
   - Please navigate to `/backend`
