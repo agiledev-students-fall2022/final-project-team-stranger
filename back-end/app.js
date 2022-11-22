@@ -1,31 +1,57 @@
-
 const express = require("express")
 const morgan = require("morgan")
-const HistoryRouter = require( './logic/HistoryFunction.js');
-const StatsRouter = require('./logic/StatsFunction.js');
-const settingsRouter = require("./logic/settingsRouter.js");
-const messageRouter = require("./logic/MessageRouter.js");
 const cors = require("cors");
 const mongoose = require ("mongoose");
-const db = require("./models/db.js")
+const db = require("./models/db.js"); 
+const authPassport = require("./logic/authPassport.js")
+const cookieParser = require("cookie-parser")
 
+// Auth 
+const jwt = require("jsonwebtoken")
+const passport = require("passport")
+
+const app = express();
+app.use(passport.initialize()) 
+
+// Env Vars 
 const dotenv = require("dotenv");
 dotenv.config({
   silent: true,
 });
 
+// Register Auth 
+const { jwtOptions, jwtStrategy } = require("./logic/authPassport") 
+passport.use("strangerLogin", jwtStrategy)
 
-const app = express();
+// Routers 
+const authRouter = require("./logic/authRouter.js"); 
+const privateRoutes = require("./logic/privateRoutes.js"); 
+const HistoryRouter = require( './logic/HistoryFunction.js');
+const StatsRouter = require('./logic/StatsFunction.js');
+const settingsRouter = require("./logic/settingsRouter.js");
+const messageRouter = require("./logic/MessageRouter.js");
+
+// Middleware 
 app.use(morgan("dev", { skip: (req, res) => process.env.NODE_ENV === "test" })); // log all incoming requests
 app.use(express.json()); // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })); // decode url-encoded incoming POST data
-app.use(cors());
+app.use(cors({ origin: process.env.FRONT_END_DOMAIN, credentials: true })) // allow incoming requests only from a "trusted" host
+app.use(cookieParser()) // useful middleware for dealing with cookies
 
-app.use("/", settingsRouter); 
+// Register Auth/Protected Routes 
+app.use("/", authRouter); 
 app.use("/", messageRouter);
 app.use("/", HistoryRouter)
 app.use("/", StatsRouter)
 
+app.use("/", passport.authenticate("strangerLogin", {
+  session: false, failureRedirect: '/authFail'}), privateRoutes);
+
+// Register All Other Routes 
+app.use("/", passport.authenticate("strangerLogin", {
+  session: false, failureRedirect: '/authFail'}), settingsRouter);
+
+// Sample Endpoint 
 app.get("/", (req, res) => {
   res.send(`
     Hello world! <br>
@@ -33,6 +59,5 @@ app.get("/", (req, res) => {
     Your .env file is currently ${process.env.TEST ? '' : 'NOT'} setup properly!
     `); 
 })
-
 
 module.exports = app; 
