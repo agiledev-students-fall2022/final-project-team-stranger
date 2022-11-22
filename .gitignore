@@ -1,5 +1,7 @@
 # VSCode Configs 
 .vscode 
+**/**/.DS_Store
+/back-end/logic/ignore.md
 
 # Compiled source #
 ###################
