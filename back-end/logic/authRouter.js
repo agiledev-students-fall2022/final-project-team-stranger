@@ -38,7 +38,7 @@ authRouter.post("/login", (req, res, next) => {
 
 }); 
 
-// Add Demo Protected Route 
+// Add authFail endpoint 
 authRouter.get("/authFail", (req, res) => {
     res.status(400).json({
         success: false,

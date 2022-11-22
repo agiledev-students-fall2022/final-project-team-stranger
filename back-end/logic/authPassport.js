@@ -6,7 +6,7 @@ const JwtStrategy = passportJWT.Strategy
 
 let jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt") 
-jwtOptions.secretOrKey = "SAMPLE_SECRET"
+jwtOptions.secretOrKey = `${process.env.REACT_APP_AUTH_TOKEN}`
 
 // JWT Strategy  
 const jwtStrategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {

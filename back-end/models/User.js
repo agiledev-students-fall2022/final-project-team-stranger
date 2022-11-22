@@ -33,7 +33,14 @@ const User = new mongoose.Schema(
                 type: mongoose.Schema.Types.ObjectId, 
                 ref : "Message"
             }
+        ], 
+        lastRefreshDate: [
+            {
+                type: mongoose.Schema.Types.Date, 
+                required: true 
+            }
         ]
+
     }, 
 
     // refer to https://mongoosejs.com/docs/timestamps.html

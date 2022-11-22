@@ -66,8 +66,8 @@ const Settings = (props) => {
           headers: { Authorization: `JWT ${jwtToken}`} 
         });
       
-        console.log(result.data)
         setLoginStatus(true); 
+        window.location = "/"
       } catch(err) {
         setLoginStatus(err.response.data.success)
       }
@@ -105,7 +105,6 @@ const Settings = (props) => {
           </Button>
         </FormControl>
       </form>
-
     </Paper>
   </Grid>
 
