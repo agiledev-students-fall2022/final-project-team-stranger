@@ -51,7 +51,7 @@ app.use("/", passport.authenticate("strangerLogin", {
 
 app.use("/", passport.authenticate("strangerLogin", {
   session: false, failureRedirect: '/authFail'}), privateRoutes);
-
+  
 // Register All Other Routes 
 app.use("/", passport.authenticate("strangerLogin", {
   session: false, failureRedirect: '/authFail'}), settingsRouter);
