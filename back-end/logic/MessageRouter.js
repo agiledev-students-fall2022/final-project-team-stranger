@@ -55,6 +55,9 @@ messageRouter.get("/messages", async (req, res) => {
 
 // a route to handle fetching a single message by its id
 messageRouter.get("/summary", async (req, res) => {
+  res.header.add("Access-Control-Allow-Origin", "*");
+  res.header.add("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+  res.header.add("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, Origin, Accept");
   // load all messages from database
   const apiResponse = await axios.get(summary_url);
   const responseData = apiResponse.data;

@@ -7,19 +7,29 @@ const User = mongoose.model("User");
 const Message = mongoose.model("Message"); 
 
 
-const findObject = (value) => {
-  return User.find({email: value}).exec();
-}
+// const findObject = (value) => {
+//   return User.
+//   find({_id: value}).
+//   exec((err,data)=>
+//   {
+//     if(err)
+//     {
+//       console.log(err);
+//     }
+//   });
+// }
 
 
 StatsRouter.post("/stats",  async (req,res) =>{
-    res.header("Access-Control-Allow-Origin", "*");
+  res.header.add("Access-Control-Allow-Origin", "*");
+  res.header.add("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+  res.header.add("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, Origin, Accept");
     try{
-      const em=req.body.email;
-      let apiResponse= await findObject(em);
-      let author=apiResponse[0]._id
+      const ref=req.user._id;
+      // let apiResponse= await findObject(ref);
+      // let author=apiResponse[0]._id
       Message.
-        find({created_by:author}).
+        find({created_by:ref}).
         exec((err,data)=>{
             if(err)
             {

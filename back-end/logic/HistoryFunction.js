@@ -16,11 +16,15 @@ function downsort(propertyName) {
       }
     }
 HistoryRouter.post("/history", async(req,res) =>{
-    try{
-      const em=req.body.email;
+  res.header.add("Access-Control-Allow-Origin", "*");
+  res.header.add("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+  res.header.add("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, Origin, Accept");
+
+  try{
+      const ref=req.user._id;
       let apiResponse;
       User.
-          find({email:em}).
+          find({_id:ref}).
           populate("previousMessages").
           exec((err,data)=>{
             if(err){

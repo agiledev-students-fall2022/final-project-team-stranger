@@ -41,8 +41,13 @@ app.use(cookieParser()) // useful middleware for dealing with cookies
 // Register Auth/Protected Routes 
 app.use("/", authRouter); 
 app.use("/", messageRouter);
-app.use("/", HistoryRouter)
-app.use("/", StatsRouter)
+
+app.use("/", passport.authenticate("strangerLogin", {
+  session: false, failureRedirect: '/authFail'}), HistoryRouter);
+
+// Register All Other Routes 
+app.use("/", passport.authenticate("strangerLogin", {
+  session: false, failureRedirect: '/authFail'}), StatsRouter);
 
 app.use("/", passport.authenticate("strangerLogin", {
   session: false, failureRedirect: '/authFail'}), privateRoutes);
