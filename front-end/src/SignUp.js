@@ -1,10 +1,11 @@
 import "./SignUp.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { 
   Grid, Paper, TextField, Typography, FormControl, Button, Link
 } from "@mui/material";
 import LogoIcon from "./components/LogoIcon";
 import axios from "axios"; 
+import { Navigate } from "react-router-dom";
 
 const initialValues = {
   "email" : "", 
@@ -16,6 +17,22 @@ const initialValues = {
 
 const SignUp = (props) => {
   const [formValues, setFormValues] = useState(initialValues); 
+  const [loginStatus, setLoginStatus] = useState(undefined); 
+  const jwtToken = localStorage.getItem("user_token")  
+
+  useEffect(() => {
+    async function getLoginStatus() {
+      try {
+        const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/settings/get`, {}, {
+          headers: { Authorization: `JWT ${jwtToken}`} 
+        })
+        setLoginStatus(true); 
+      } catch {
+        setLoginStatus(false); 
+      }
+    }
+    getLoginStatus(); 
+  }, [])
   
   const onChange = e => {
     const {name, value} = e.target; 
@@ -43,12 +60,20 @@ const SignUp = (props) => {
     }
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    console.log(formValues); 
+    try {
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/signup`, formValues)
+      setLoginStatus(true);
+      localStorage.setItem("user_token", res.data.token)
+    } catch {
+      setLoginStatus(false); 
+      setFormValues(initialValues); 
+      window.location.reload(); 
+    }
   }
 
-  return <Grid className="signUpPage" align="center">
+  const elem = <Grid className="signUpPage" align="center">
     <Paper elevation={10} className="pageWrapper">
       <Grid className="signUpLogo">
         <LogoIcon color="primary" sx={{fontSize : "5rem"}}/>
@@ -74,6 +99,8 @@ const SignUp = (props) => {
     </Paper>
   </Grid>
 
+  if (loginStatus === undefined) {return <div><p>Loading</p></div>}
+  else {return loginStatus ? <Navigate to="/" replace/> : elem}
 };
 
 export default SignUp;

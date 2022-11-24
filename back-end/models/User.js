@@ -34,12 +34,10 @@ const User = new mongoose.Schema(
                 ref : "Message"
             }
         ], 
-        lastRefreshDate: [
-            {
+        lastRefreshDate: {
                 type: mongoose.Schema.Types.Date, 
                 required: true 
-            }
-        ]
+        }
 
     }, 
 
