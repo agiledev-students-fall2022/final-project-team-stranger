@@ -15,7 +15,7 @@ import {
   createTheme,
 } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
-import PrivateRoute from "./components/PrivateRoute.js";
+import ERROR_404 from "./components/404.js"; 
 
 const theme = createTheme({
   palette: {
@@ -67,6 +67,8 @@ function App() {
 
                 {/* Stats Page */}
                 <Route path="/settings" element={<Settings />}></Route>
+
+                <Route path="*" element={<ERROR_404/>}></Route>
               </Routes>
             </main>
             <Footer />

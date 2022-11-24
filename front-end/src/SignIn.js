@@ -23,7 +23,6 @@ const SignIn = (props) => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log(formValues); 
 
     try {
       const res = await (await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/login`, formValues)).data
@@ -37,6 +36,7 @@ const SignIn = (props) => {
     } catch(err) {
       alert("Incorrect Credentials!")
       setFormValues(initialValues);
+      window.location.reload(false); 
     }
   }
   
