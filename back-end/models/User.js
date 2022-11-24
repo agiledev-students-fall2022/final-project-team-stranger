@@ -36,6 +36,7 @@ const User = new mongoose.Schema(
     ],
     lastRefreshDate: {
       type: mongoose.Schema.Types.Date,
+      required: true,
     },
   },
 
