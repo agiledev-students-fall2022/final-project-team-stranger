@@ -90,7 +90,7 @@ messageRouter.post("/messages", async (req, res) => {
           ) {
             //move the current message to previous message, if any
             if (data.currentMessages.length != 0) {
-              User.findById(req.user._id)
+              User.findOne({ _id: req.user._id })
                 .update({
                   $push: {
                     previousMessages: data.currentMessages.map(
@@ -127,7 +127,7 @@ messageRouter.post("/messages", async (req, res) => {
                 );
                 curMessages = strangerMessages.map((msg) => msg._id);
                 //update the daily messages
-                User.findById(req.user._id)
+                User.findOne({ _id: req.user._id })
                   .updateOne({
                     $set: {
                       currentMessages: curMessages,
@@ -142,7 +142,7 @@ messageRouter.post("/messages", async (req, res) => {
             );
 
             //change the refresh date to current time
-            User.findById(req.user._id)
+            User.findOne({ _id: req.user._id })
               .updateOne({
                 $currentDate: {
                   lastRefreshDate: true,
