@@ -26,6 +26,7 @@ const History = (props) => {
           headers: { Authorization: `JWT ${jwtToken}`} 
         });
         setLoginStatus(true); 
+        setData(result.data)
       } catch(err) {
         setLoginStatus(err.response.data.success)
       }

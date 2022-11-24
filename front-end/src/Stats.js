@@ -18,7 +18,6 @@ import { Navigate } from "react-router-dom";
 
 const Stats = (props) => {
   const [data, setData] = useState([]); 
-  const em="yz6790@nyu.edu"
   const [inf, setInf]=useState([]);
   const [loginStatus, setLoginStatus] = useState(undefined); 
   const jwtToken = localStorage.getItem("user_token")
@@ -28,8 +27,9 @@ const Stats = (props) => {
       try {
         const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/stats`, {}, {
           headers: { Authorization: `JWT ${jwtToken}`} 
-        });
+        })
         setLoginStatus(true); 
+        setData(result.data)
       } catch(err) {
         setLoginStatus(err.response.data.success)
       }
@@ -87,7 +87,7 @@ const Stats = (props) => {
       
       <FormControl className="SortChoices">
         <InputLabel id="Select" className="default_text">Sorted By</InputLabel>
-        <Select label="Sorted By" onChange={(e)=>handleClick(e)} className="sort_icon" defaultValue={"score"}>
+        <Select label="Sorted By" onChange={(e)=>handleClick(e)} className="sort_icon" defaultValue={"frequency"}>
           <MenuItem value="frequency">Impact</MenuItem>
           <MenuItem value="content" >Text</MenuItem>
           <MenuItem value="createdAt" >Time</MenuItem>

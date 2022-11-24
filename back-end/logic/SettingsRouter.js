@@ -6,9 +6,6 @@ const UserModel = mongoose.model("User")
 const settingsRouter = express.Router();
 
 settingsRouter.post("/settings/update", (req, res) => {
-    res.header.add("Access-Control-Allow-Origin", "*");
-    res.header.add("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-    res.header.add("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, Origin, Accept");
     // Database Interaction Here 
     const newData = {
         "username" : req.body.username.trim(), 

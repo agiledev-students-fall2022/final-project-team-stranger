@@ -8,9 +8,6 @@ const { jwtOptions } = require('./authPassport');
 const authRouter = express.Router(); 
 
 authRouter.post("/login", (req, res, next) => {
-    res.header.add("Access-Control-Allow-Origin", "*");
-    res.header.add("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-    res.header.add("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, Origin, Accept");
     const email = req.body.email
     const password = req.body.password
 

@@ -21,9 +21,6 @@ const Message = mongoose.model("Message");
 
 
 StatsRouter.post("/stats",  async (req,res) =>{
-  res.header.add("Access-Control-Allow-Origin", "*");
-  res.header.add("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-  res.header.add("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, Origin, Accept");
     try{
       const ref=req.user._id;
       // let apiResponse= await findObject(ref);

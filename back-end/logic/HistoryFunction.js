@@ -16,9 +16,6 @@ function downsort(propertyName) {
       }
     }
 HistoryRouter.post("/history", async(req,res) =>{
-  res.header.add("Access-Control-Allow-Origin", "*");
-  res.header.add("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-  res.header.add("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, Origin, Accept");
 
   try{
       const ref=req.user._id;
@@ -33,12 +30,10 @@ HistoryRouter.post("/history", async(req,res) =>{
             else{
               apiResponse=data[0].previousMessages
               apiResponse.sort(downsort("createdAt"))
-              console.log(apiResponse)
               res.json(apiResponse)
             }
           })
     } catch(err){
-      console.log(err);
       res.json(err)
     }
 })
