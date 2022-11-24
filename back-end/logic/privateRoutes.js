@@ -7,6 +7,9 @@ const protectedRouter = express.Router();
 
 // default route to check if the user is loggedIn 
 protectedRouter.post("/secret", (req, res, next) => {
+    res.header.add("Access-Control-Allow-Origin", "*");
+    res.header.add("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+    res.header.add("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Authorization, Origin, Accept");
     res.json({
         success: true, 
         status: "All good!"}); 

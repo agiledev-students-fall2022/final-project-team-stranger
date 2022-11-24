@@ -13,15 +13,26 @@ import InputLabel from "@mui/material/InputLabel";
 import MessageBlock from "./components/MessageItem.js";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
+
 
 const Stats = (props) => {
   const [data, setData] = useState([]); 
   const [inf, setInf]=useState([]);
+  const [loginStatus, setLoginStatus] = useState(undefined); 
+  const jwtToken = localStorage.getItem("user_token")
 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/stats`);
-      setData(result.data);
+      try {
+        const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/stats`, {}, {
+          headers: { Authorization: `JWT ${jwtToken}`} 
+        })
+        setLoginStatus(true); 
+        setData(result.data)
+      } catch(err) {
+        setLoginStatus(err.response.data.success)
+      }
     }
     fetchData();
   }, []);
@@ -59,52 +70,46 @@ const Stats = (props) => {
     setData(newData)
     console.log(data)
   }
-
-
-  let dataList = (data.map((item,index)=>{
-    return(
-      <MessageBlock key={index} {...item} />
-    )
-  }))
-
   
 
   
-  return(
-    <div>
-      <Box className="container">
-        <Avatar variant="circular" alt="User" className="profile"></Avatar>
-        <Typography variant="h6" className="Slogan">Embrace Warmth <br></br>You Sent to the World</Typography>
-      </Box>
+  
+  const elem =
+  <div>
+    <Box className="container">
+      <Avatar variant="circular" alt="User" className="profile"></Avatar>
+      <Typography variant="h6" className="Slogan">Embrace Warmth <br></br>You Sent to the World</Typography>
+    </Box>
 
-      <br></br>
-      <br></br>
-      <Box className="container" display="flex" justifyContent={"right"}>
-       
-        <FormControl className="SortChoices">
-          <InputLabel id="Select" className="default_text">Sorted By</InputLabel>
-          <Select label="Sorted By" onChange={(e)=>handleClick(e)} className="sort_icon" defaultValue={"score"}>
-            <MenuItem value="score">Impact</MenuItem>
-            <MenuItem value="text" >Text</MenuItem>
-            <MenuItem value="time" >Time</MenuItem>
-          </Select>
-        </FormControl>
+    <br></br>
+    <br></br>
+    <Box className="container" display="flex" justifyContent={"right"}>
       
-      </Box>
-      <br></br>
-      <Box textAlign="left" className="Total">
-        <Typography variant="h8" className="influence">Your Total influence: {inf}</Typography>
-      </Box>
-      <Box>
-
-        {data.map((item,index)=> (
-          <MessageBlock key={index} text={item.text} score={item.score} time={item.time} page="stats" />
-        ))}
-
-      </Box>
-    </div>
+      <FormControl className="SortChoices">
+        <InputLabel id="Select" className="default_text">Sorted By</InputLabel>
+        <Select label="Sorted By" onChange={(e)=>handleClick(e)} className="sort_icon" defaultValue={"frequency"}>
+          <MenuItem value="frequency">Impact</MenuItem>
+          <MenuItem value="content" >Text</MenuItem>
+          <MenuItem value="createdAt" >Time</MenuItem>
+        </Select>
+      </FormControl>
     
-  )
+    </Box>
+    <br></br>
+    <Box textAlign="left" className="Total">
+      <Typography variant="h8" className="influence">Your Total influence: {inf}</Typography>
+    </Box>
+    <Box>
+
+      {data.map((item,index)=> (
+        <MessageBlock key={index} text={item.content} score={item.frequency} time={item.createdAt} page="stats" />
+      ))}
+
+    </Box>
+  </div>
+    
+  if (loginStatus === undefined) return <div>Loading...</div>
+  else return loginStatus ? elem : <Navigate to="/sign-in" replace/>
 };
 
 export default Stats;

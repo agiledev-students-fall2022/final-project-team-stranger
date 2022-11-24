@@ -1,18 +1,47 @@
 const express=require("express")
 const StatsRouter = express.Router();
 const axios=require("axios")
+const mongoose = require("mongoose"); 
+const db = require("../models/db.js")
+const User = mongoose.model("User"); 
+const Message = mongoose.model("Message"); 
 
-StatsRouter.get("/stats", (req,res) =>{
-    res.header("Access-Control-Allow-Origin", "*");
-    const response=axios
-    .get("https://my.api.mockaroo.com/history?key=b402e590")
-    .then(apiResponse => res.json(apiResponse.data))
-    .catch (err => 
-        res.json({
-          success: false,
-          error: err,
-        })
-    )
+
+// const findObject = (value) => {
+//   return User.
+//   find({_id: value}).
+//   exec((err,data)=>
+//   {
+//     if(err)
+//     {
+//       console.log(err);
+//     }
+//   });
+// }
+
+
+StatsRouter.post("/stats",  async (req,res) =>{
+    try{
+      const ref=req.user._id;
+      // let apiResponse= await findObject(ref);
+      // let author=apiResponse[0]._id
+      Message.
+        find({created_by:ref}).
+        exec((err,data)=>{
+            if(err)
+            {
+              console.log(err);
+            }
+            else
+            {
+              res.json(data);
+            }
+          }
+        )
+    } catch(err){
+      console.log(err);
+      res.json(err)
+    }
 })
 
 module.exports = StatsRouter
