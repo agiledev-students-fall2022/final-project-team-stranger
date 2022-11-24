@@ -8,17 +8,25 @@ const Message = mongoose.model("Message");
 
 const { body, validationResult } = require("express-validator");
 
-let messages = [
-  "When my heart feels lonely, your spirit swiftly bonds me with love. You are my world.",
-  "Anytime I think of how much I have lost out, I smile because I've not lost out in finding that one Jewel so priceless and virtuous. You fill my world with blessings sweetheart.",
-  "I'll hug you all day if I could...",
-];
+// let messages = [
+//   "When my heart feels lonely, your spirit swiftly bonds me with love. You are my world.",
+//   "Anytime I think of how much I have lost out, I smile because I've not lost out in finding that one Jewel so priceless and virtuous. You fill my world with blessings sweetheart.",
+//   "I'll hug you all day if I could...",
+// ];
 // const mock_url = "https://my.api.mockaroo.com/messages?key=d685d830";
 // const summary_url = "https://my.api.mockaroo.com/history?key=b402e590";
 
 const messageRouter = express.Router();
+
+//page protection route, no actual data fetched
+messageRouter.post("/send-message/get", async (req, res) => {
+  return res.status(200).json({
+    status: "authenticated user",
+  });
+});
+
 messageRouter.post(
-  "/send-message",
+  "/send-message/send",
   //Validate before storing: maximum 250 characters
   body("message").isLength({ max: 250 }),
   async (req, res) => {
@@ -31,33 +39,25 @@ messageRouter.post(
     }
     // try to save the message to the database
     try {
-      //const cur_user = await User.findOne({ email: req.body.email });
-      const cur_user = await User.findOne({ email: "yz6790@nyu.edu" });
+      //create new message object
       const message = new Message({
-        created_by: cur_user._id, //user ID
+        created_by: req.user._id, //user ID
         content: req.body.message,
         frequency: 0,
       });
+      //save new message to db
       message.save((err) => {
         if (err) {
           console.error(err);
-          throw err;
+          return res.status(400).json({
+            errors: errors.array(),
+            status: "Too many characters",
+          });
         } else {
           console.log("Success!");
         }
       });
-      cur_user
-        .update({
-          $push: { currentMessages: message._id },
-        })
-        .exec((err, data) => {
-          if (err) {
-            console.error(err);
-            throw err;
-          } else {
-            console.log(data);
-          }
-        });
+
       return res.json({
         message: req.body.message, // return the message we just saved
         status: "New message saved to the database successfully",
@@ -72,56 +72,137 @@ messageRouter.post(
   }
 );
 
-messageRouter.get("/messages", async (req, res) => {
-  // load all messages from database
+messageRouter.post("/messages", async (req, res) => {
+  let dailyMessages, totalViews;
   try {
-    const cur_user = User.findOne({ email: "yz6790@nyu.edu" });
-    // const messages = await Message.find({});
-    //const apiResponse = await axios.get(mock_url);
-    //static test
-    res.json({
-      //messages: apiResponse.data,
-      messages: messages,
-      status: "all good",
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(400).json({
-      error: err,
-      status: "failed to retrieve messages from the database",
-    });
-  }
-});
-
-messageRouter.get("/summary", async (req, res) => {
-  let apiResponse, lastMessage, totalViews;
-  try {
-    const cur_user = User.findOne({ email: "yz6790@nyu.edu" });
-
-    cur_user
-      .populate("previousMessages")
+    User.findOne({ _id: req.user._id })
       .populate("currentMessages")
+      .populate("previousMessages")
       .exec((err, data) => {
         if (err) {
-          console.error(err);
-          throw err;
+          console.log(err);
         } else {
-          apiResponse = data.currentMessages;
-          totalViews = apiResponse.reduce((accumulator, object) => {
-            return accumulator + object.frequency;
-          }, 0);
-          lastMessage = data.previousMessages.pop().content;
-          res.json({
-            view: totalViews,
-            lastMessage: lastMessage,
-            //lastMessage: "test last message",
-            status: "all good",
-          });
+          //when the user login for the first time
+          //or when the messages need refreshment
+          if (
+            data.currentMessages.length == 0 ||
+            data.lastRefreshDate.getDay() != new Date().getDay()
+          ) {
+            //move the current message to previous message, if any
+            if (data.currentMessages.length != 0) {
+              User.findById(req.user._id)
+                .update({
+                  $push: {
+                    previousMessages: data.currentMessages.map(
+                      (msg) => msg._id
+                    ),
+                  },
+                })
+                .exec((err, data) => {
+                  if (err) {
+                    console.log(err);
+                  }
+                });
+            }
+            //find three messages not created by current user and of least frequencies
+            Message.find({ created_by: { $ne: req.user._id } }).exec(
+              (err, strangerMessages) => {
+                if (err) {
+                  console.log(err);
+                }
+                strangerMessages.sort((a, b) => a.frequency - b.frequency);
+                strangerMessages = strangerMessages.splice(0, 3);
+                //increment the frequencies
+                strangerMessages.forEach((msg) =>
+                  Message.findOneAndUpdate(
+                    { _id: msg._id },
+                    {
+                      $set: { frequency: msg.frequency + 1 },
+                    }
+                  ).exec((err, data) => {
+                    if (err) {
+                      console.log(err);
+                    }
+                  })
+                );
+                curMessages = strangerMessages.map((msg) => msg._id);
+                //update the daily messages
+                User.findById(req.user._id)
+                  .updateOne({
+                    $set: {
+                      currentMessages: curMessages,
+                    },
+                  })
+                  .exec((err, data) => {
+                    if (err) {
+                      console.log(err);
+                    }
+                  });
+              }
+            );
+
+            //change the refresh date to current time
+            User.findById(req.user._id)
+              .updateOne({
+                $currentDate: {
+                  lastRefreshDate: true,
+                },
+              })
+              .exec((err, data) => {
+                if (err) {
+                  console.log(err);
+                }
+              });
+          }
+          //else, do nothing
+        }
+      });
+
+    User.findOne({ _id: req.user._id })
+      .populate("currentMessages")
+      .populate("previousMessages")
+      .exec((err, data) => {
+        if (err) {
+          console.log(err);
+        } else {
+          Message.find({ created_by: req.user._id }).exec(
+            (err, sentMessages) => {
+              if (err) {
+                console.log(err);
+              }
+              //get current messages
+              const dailyMessages = data.currentMessages.map(
+                (msg) => msg.content
+              );
+
+              //get total influence by summing up frequencies of messages sent by the current user
+              totalViews = sentMessages.reduce((accumulator, object) => {
+                return accumulator + object.frequency;
+              }, 0);
+
+              //get highlight
+              let lastMessage;
+              //no highlight for the first day
+              if (data.previousMessages.length == 0) {
+                lastMessage = "No highlights available";
+              } else {
+                lastMessage = data.previousMessages.pop().content;
+              }
+              //send response
+              return res.status(200).json({
+                messages: dailyMessages,
+                view: totalViews,
+                lastMessage: lastMessage,
+                status: "all good",
+              });
+            }
+          );
         }
       });
   } catch (err) {
-    console.error(err);
+    console.log(err);
     res.status(400).json({
+      success: false,
       error: err,
       status: "failed to retrieve messages from the database",
     });

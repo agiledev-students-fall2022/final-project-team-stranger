@@ -39,7 +39,33 @@
     > div
     > div.css-ohwg9z
     > div.css-1f8sh1y
+    > div:nth-child(1)
+    > div
+    > div
+    > div
+    > div {
+    padding-top: 0;
+  }
+  #root
+    > div
+    > main
+    > div
+    > div.css-ohwg9z
+    > div.css-1f8sh1y
     > div:nth-child(2)
+    > div
+    > div
+    > div
+    > div {
+    padding-top: 0;
+  }
+  #root
+    > div
+    > main
+    > div
+    > div.css-ohwg9z
+    > div.css-1f8sh1y
+    > div:nth-child(3)
     > div
     > div
     > div
