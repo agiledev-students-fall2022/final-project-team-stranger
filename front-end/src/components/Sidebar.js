@@ -51,7 +51,7 @@ const Sidebar = (props) => {
   };
 
   function logout(){
-    localStorage.clear();
+    localStorage.removeItem("user_token");
     window.location.href = "/sign-in";
   }
 
