@@ -37,6 +37,9 @@ authRouter.post("/login", (req, res, next) => {
 }); 
 
 authRouter.post("/signup", (req, res, next) => {
+    const refreshDate = new Date()
+    refreshDate.setDate(refreshDate.getDate()-2);
+
     const UserModel = mongoose.model("User"); 
     const newUser = new UserModel({
         username: req.body.username, 
@@ -44,7 +47,7 @@ authRouter.post("/signup", (req, res, next) => {
         email: req.body.email, 
         currentMessages: [], 
         previousMessages: [], 
-        lastRefreshDate: new Date() - 1
+        lastRefreshDate: refreshDate
     }); 
 
     newUser.save((err, data, info) => {
