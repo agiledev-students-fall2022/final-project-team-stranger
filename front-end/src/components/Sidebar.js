@@ -24,7 +24,7 @@ const Sidebar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("Username");
   const [joinTime, setJoinTime] = useState("XX");
-  const [loginStatus, setLoginStatus] = useState(undefined); 
+  const [loginStatus, setLoginStatus] = useState(false); 
   const jwtToken = localStorage.getItem("user_token")
   
 
@@ -49,6 +49,12 @@ const Sidebar = (props) => {
     e.preventDefault();
     setIsOpen(!isOpen);
   };
+
+  function logout(){
+    localStorage.clear();
+    window.location.href = "/sign-in";
+  }
+
   const elemLogin=
     <>
       <IconButton>
@@ -68,7 +74,7 @@ const Sidebar = (props) => {
               <ListItemIcon>
                 <LoginIcon className="logOut"/>
               </ListItemIcon>
-              <ListItemText primary="Sign out" />
+              <ListItemText primary="Sign in" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
@@ -101,7 +107,7 @@ const Sidebar = (props) => {
 
       <List className="actions">
         <ListItem disablePadding>
-          <ListItemButton id="sign-in" className="menu-item" href="/sign-in">
+          <ListItemButton id="sign-in" onClick={logout} className="menu-item" href="/sign-in">
             <ListItemIcon>
               <LogoutIcon className="logOut"/>
             </ListItemIcon>

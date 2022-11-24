@@ -31,6 +31,7 @@ const StatsRouter = require('./logic/StatsFunction.js');
 const settingsRouter = require("./logic/settingsRouter.js");
 const messageRouter = require("./logic/MessageRouter.js");
 const SidebarRouter = require("./logic/sidebarRouter.js");
+const LogoutRouter = require("./logic/logoutRouter.js");
 
 // Middleware 
 app.use(morgan("dev", { skip: (req, res) => process.env.NODE_ENV === "test" })); // log all incoming requests
@@ -56,8 +57,12 @@ app.use("/", passport.authenticate("strangerLogin", {
 // Register All Other Routes 
 app.use("/", passport.authenticate("strangerLogin", {
   session: false, failureRedirect: '/authFail'}), settingsRouter);
-  app.use("/", passport.authenticate("strangerLogin", {
-    session: false, failureRedirect: '/authFail'}), SidebarRouter);
+
+app.use("/", passport.authenticate("strangerLogin", {
+  session: false, failureRedirect: '/authFail'}), SidebarRouter);
+
+app.use("/", passport.authenticate("strangerLogin", {
+  session: false, failureRedirect: '/authFail'}), LogoutRouter);
 
 // Sample Endpoint 
 app.get("/", (req, res) => {
