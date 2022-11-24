@@ -11,8 +11,12 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
+const url = `${process.env.REACT_APP_BACKEND_API_URL}`;
 
 const Home = (props) => {
+  const [loginStatus, setLoginStatus] = useState(undefined);
+  const jwtToken = localStorage.getItem("user_token");
   const [messages, setMessages] = useState([
     "Fetching warmth...",
     "Fetching warmth...",
@@ -20,58 +24,32 @@ const Home = (props) => {
   ]);
   const [views, setViews] = useState(0);
   const [lastMessage, setLastMessage] = useState();
-  const [error, setError] = useState("");
   const [date, setDate] = useState(new Date().getDate());
-  const url = `${process.env.REACT_APP_BACKEND_API_URL}`;
-
-  const fetchMessages = () => {
-    axios
-      .get(`${url}/messages`)
-      .then((response) => {
-        // axios bundles up all response data in response.data property
-        const messages = response.data.messages;
-        setMessages(messages);
-      })
-      .catch((err) => {
-        setError(err);
-        console.error(error);
-      })
-      .finally(() => {
-        // the response has been received, so remove the loading icon
-        //setLoaded(true)
-        console.log("Content successfully loaded.");
-      });
-  };
-
-  const fetchSummary = () => {
-    axios
-      .get(`${url}/summary`)
-      .then((response) => {
-        // axios bundles up all response data in response.data property
-        setViews(response.data.view);
-        setLastMessage(response.data.lastMessage);
-      })
-      .catch((err) => {
-        setError(err);
-        console.error(error);
-      })
-      .finally(() => {
-        console.log("Content successfully loaded.");
-      });
-  };
 
   useEffect(() => {
-    fetchMessages();
-    fetchSummary();
-    //update when date changes
-    let currentDate;
-    if ((currentDate = new Date().getDate()) != date) {
-      fetchMessages();
-      setDate(currentDate);
+    async function fetchData() {
+      try {
+        const result = await axios.post(
+          `${url}/messages`,
+          {},
+          {
+            headers: { Authorization: `JWT ${jwtToken}` },
+          }
+        );
+        console.log(result.data);
+        setMessages(result.data.messages);
+        setViews(result.data.view);
+        setLastMessage(result.data.lastMessage);
+        setLoginStatus(true);
+      } catch (err) {
+        setLoginStatus(err.response.data.success);
+      }
     }
+    fetchData();
+    // refreshment only available when the user refreshes the page
   }, []);
 
-  return (
+  const elem = (
     <div>
       <Typography variant="h4" color="primary" id="welcome">
         Welcome Home!
@@ -118,6 +96,9 @@ const Home = (props) => {
       </Card>
     </div>
   );
+
+  if (loginStatus === undefined) return <div>Loading...</div>;
+  else return loginStatus ? elem : <Navigate to="/sign-in" replace />;
 };
 
 export default Home;
