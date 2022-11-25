@@ -73,7 +73,6 @@ messageRouter.post(
 );
 
 messageRouter.post("/messages", async (req, res) => {
-  let dailyMessages, totalViews;
   try {
     User.findOne({ _id: req.user._id })
       .populate("currentMessages")
@@ -90,19 +89,21 @@ messageRouter.post("/messages", async (req, res) => {
           ) {
             //move the current message to previous message, if any
             if (data.currentMessages.length != 0) {
-              User.findOne({ _id: req.user._id })
-                .update({
+              User.findOneAndUpdate(
+                { _id: req.user._id },
+                {
                   $push: {
                     previousMessages: data.currentMessages.map(
                       (msg) => msg._id
                     ),
                   },
-                })
-                .exec((err, data) => {
-                  if (err) {
-                    console.log(err);
-                  }
-                });
+                }
+              )
+              .exec((err, data) => {
+                if (err) {
+                  console.log(err);
+                }
+              });
             }
             //find three messages not created by current user and of least frequencies
             Message.find({ created_by: { $ne: req.user._id } }).exec(
@@ -176,7 +177,7 @@ messageRouter.post("/messages", async (req, res) => {
               );
 
               //get total influence by summing up frequencies of messages sent by the current user
-              totalViews = sentMessages.reduce((accumulator, object) => {
+              let totalViews = sentMessages.reduce((accumulator, object) => {
                 return accumulator + object.frequency;
               }, 0);
 

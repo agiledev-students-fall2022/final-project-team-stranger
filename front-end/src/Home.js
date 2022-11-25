@@ -36,7 +36,6 @@ const Home = (props) => {
             headers: { Authorization: `JWT ${jwtToken}` },
           }
         );
-        console.log(result.data);
         setMessages(result.data.messages);
         setViews(result.data.view);
         setLastMessage(result.data.lastMessage);
