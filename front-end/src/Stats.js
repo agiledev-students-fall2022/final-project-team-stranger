@@ -15,23 +15,26 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
-
 const Stats = (props) => {
-  const [data, setData] = useState([]); 
-  const [inf, setInf]=useState([]);
-  const [loginStatus, setLoginStatus] = useState(undefined); 
-  const jwtToken = localStorage.getItem("user_token")
+  const [data, setData] = useState([]);
+  const [inf, setInf] = useState([]);
+  const [loginStatus, setLoginStatus] = useState(undefined);
+  const jwtToken = localStorage.getItem("user_token");
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/stats`, {}, {
-          headers: { Authorization: `JWT ${jwtToken}`} 
-        })
-        setLoginStatus(true); 
-        setData(result.data)
-      } catch(err) {
-        setLoginStatus(err.response.data.success)
+        const result = await axios.post(
+          `${process.env.REACT_APP_BACKEND_API_URL}/stats`,
+          {},
+          {
+            headers: { Authorization: `JWT ${jwtToken}` },
+          }
+        );
+        setLoginStatus(true);
+        setData(result.data);
+      } catch (err) {
+        setLoginStatus(err.response.data.success);
       }
     }
     fetchData();
@@ -40,83 +43,95 @@ const Stats = (props) => {
   useEffect(() => {
     async function fetchSummary() {
       try {
-        const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/summary`, {}, {
-          headers: { Authorization: `JWT ${jwtToken}`} 
-        })
+        const result = await axios.post(
+          `${process.env.REACT_APP_BACKEND_API_URL}/summary`,
+          {},
+          {
+            headers: { Authorization: `JWT ${jwtToken}` },
+          }
+        );
         setLoginStatus(true);
-        setInf(result.data)
-      } catch(err) {
-        setLoginStatus(err.response.data.success)
+        setInf(result.data);
+      } catch (err) {
+        setLoginStatus(err.response.data.success);
       }
     }
     fetchSummary();
   }, []);
 
-  
   function downSort(propertyName) {
-    if ((typeof data[0][propertyName]) != "number") {
-      return function(object1, object2) {
+    if (typeof data[0][propertyName] != "number") {
+      return function (object1, object2) {
         var value1 = object1[propertyName];
         var value2 = object2[propertyName];
         return value2.localeCompare(value1);
-      }
-    }
-    else {
-      return function(object1, object2) {
+      };
+    } else {
+      return function (object1, object2) {
         var value1 = object1[propertyName];
         var value2 = object2[propertyName];
         return value2 - value1;
-      }
+      };
     }
   }
-  
-  function handleClick (e){
+
+  function handleClick(e) {
     var prop = e.target.value;
-    let newData = [... data]
+    let newData = [...data];
     newData.sort(downSort(prop));
-    setData(newData)
-    console.log(data)
+    setData(newData);
   }
-  
 
-  
-  
-  const elem =
-  <div>
-    <Box className="container">
-      <Avatar variant="circular" alt="User" className="profile"></Avatar>
-      <Typography variant="h6" className="Slogan">Embrace Warmth <br></br>You Sent to the World</Typography>
-    </Box>
+  const elem = (
+    <div>
+      <Box className="container">
+        <Avatar variant="circular" alt="User" className="profile"></Avatar>
+        <Typography variant="h6" className="Slogan">
+          Embrace Warmth <br></br>You Sent to the World
+        </Typography>
+      </Box>
 
-    <br></br>
-    <br></br>
-    <Box className="container" display="flex" justifyContent={"right"}>
-      
-      <FormControl className="SortChoices">
-        <InputLabel id="Select" className="default_text">Sorted By</InputLabel>
-        <Select label="Sorted By" onChange={(e)=>handleClick(e)} className="sort_icon" defaultValue={"frequency"}>
-          <MenuItem value="frequency">Impact</MenuItem>
-          <MenuItem value="content" >Text</MenuItem>
-          <MenuItem value="createdAt" >Time</MenuItem>
-        </Select>
-      </FormControl>
-    
-    </Box>
-    <br></br>
-    <Box textAlign="left" className="Total">
-      <Typography variant="h8" className="influence">Your Total influence: {inf}</Typography>
-    </Box>
-    <Box>
+      <br></br>
+      <br></br>
+      <Box className="container" display="flex" justifyContent={"right"}>
+        <FormControl className="SortChoices">
+          <InputLabel id="Select" className="default_text">
+            Sorted By
+          </InputLabel>
+          <Select
+            label="Sorted By"
+            onChange={(e) => handleClick(e)}
+            className="sort_icon"
+            defaultValue={"frequency"}
+          >
+            <MenuItem value="frequency">Impact</MenuItem>
+            <MenuItem value="content">Text</MenuItem>
+            <MenuItem value="createdAt">Time</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <br></br>
+      <Box textAlign="left" className="Total">
+        <Typography variant="h8" className="influence">
+          Your Total influence: {inf}
+        </Typography>
+      </Box>
+      <Box>
+        {data.map((item, index) => (
+          <MessageBlock
+            key={index}
+            text={item.content}
+            score={item.frequency}
+            time={item.createdAt}
+            page="stats"
+          />
+        ))}
+      </Box>
+    </div>
+  );
 
-      {data.map((item,index)=> (
-        <MessageBlock key={index} text={item.content} score={item.frequency} time={item.createdAt} page="stats" />
-      ))}
-
-    </Box>
-  </div>
-    
-  if (loginStatus === undefined) return <div>Loading...</div>
-  else return loginStatus ? elem : <Navigate to="/sign-in" replace/>
+  if (loginStatus === undefined) return <div>Loading...</div>;
+  else return loginStatus ? elem : <Navigate to="/sign-in" replace />;
 };
 
 export default Stats;
