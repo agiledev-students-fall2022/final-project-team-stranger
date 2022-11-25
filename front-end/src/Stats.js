@@ -39,13 +39,20 @@ const Stats = (props) => {
 
   useEffect(() => {
     async function fetchSummary() {
-      const result = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/summary`);
-      setInf(result.data.view);
+      try {
+        const result = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/summary`, {}, {
+          headers: { Authorization: `JWT ${jwtToken}`} 
+        })
+        setLoginStatus(true);
+        setInf(result.data)
+      } catch(err) {
+        setLoginStatus(err.response.data.success)
+      }
     }
     fetchSummary();
   }, []);
 
-
+  
   function downSort(propertyName) {
     if ((typeof data[0][propertyName]) != "number") {
       return function(object1, object2) {
