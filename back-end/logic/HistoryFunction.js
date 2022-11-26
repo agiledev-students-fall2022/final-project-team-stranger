@@ -7,14 +7,6 @@ const db = require("../models/db.js")
 const User = mongoose.model("User"); 
 const Message = mongoose.model("Message"); 
 
-
-function downsort(propertyName) {
-      return function(object1, object2) {
-        var value1 = object1[propertyName];
-        var value2 = object2[propertyName];
-        return value2.toString().localeCompare(value1.toString());
-      }
-    }
 HistoryRouter.post("/history", async(req,res) =>{
 
   try{
@@ -29,7 +21,7 @@ HistoryRouter.post("/history", async(req,res) =>{
             }
             else{
               apiResponse=data[0].previousMessages
-              apiResponse.sort(downsort("createdAt"))
+              apiResponse.reverse();
               res.json(apiResponse)
             }
           })
