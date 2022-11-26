@@ -41,7 +41,7 @@ Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
 
 ## Project Build and Run Instructions
 
-- To run the frontend
+- To run the frontend:
   - Please navigate to `/frontend`
   - Install all dependencies using `npm install`
   - Create a file with the name `.env`
@@ -53,10 +53,11 @@ Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
   - Create a file with the name `.env`
   - Copy the values from `.example.env` into the file you created above, changing the environment variables as necessary.
   - To run the application, run `npx nodemon server.js`
-- To run the backend tests
+- To run the backend tests:
   - Navigate to `/backend/`
   - Execute all tests by running `npm test`
-- To use the database: PLACEHOLDER
+- To use the database:
+  - Replace the DB_CONNECTION_STRING and REACT_APP_AUTH_TOKEN in your `.env` file with the credentials given.
 
 ## Roles
 
