@@ -92,14 +92,15 @@ messageRouter.post("/messages", async (req, res) => {
               User.findOneAndUpdate(
                 { _id: req.user._id },
                 {
-                  $push: {
-                    previousMessages: data.currentMessages.map(
-                      (msg) => msg._id
-                    ),
+                  //use set instead of push to avoid duplicate addition (maybe due to duplicate post request)
+                  $set: {
+                    previousMessages: [
+                      ...data.previousMessages.map((msg) => msg._id),
+                      ...data.currentMessages.map((msg) => msg._id),
+                    ],
                   },
                 }
-              )
-              .exec((err, data) => {
+              ).exec((err, data) => {
                 if (err) {
                   console.log(err);
                 }
@@ -184,6 +185,7 @@ messageRouter.post("/messages", async (req, res) => {
               //get highlight
               let lastMessage;
               //no highlight for the first day
+              console.log(data);
               if (data.previousMessages.length == 0) {
                 lastMessage = "No highlights available";
               } else {
