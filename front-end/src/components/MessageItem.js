@@ -8,10 +8,10 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const MessageItem = (props) => {
   let {text, score, time, page} = props
-  let special=["first","second","third","fourth", "fifth"]
+  let special=["latest","second to last","third to last","fourth to last", "fifth to last"]
   let s;
   if(page == "stats") {s = "Shared with " + score + " strangers!"}
-  else if(page == "history") {s = "You received this message on your" + special[Math.floor(time/3)] +"to last refreshment"}
+  else if(page == "history") {s = "You received this message on your " + special[Math.floor(time/3)] +" refreshment"}
 
   return (
     <div >
