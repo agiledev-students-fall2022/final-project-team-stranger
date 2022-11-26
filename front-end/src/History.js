@@ -53,7 +53,7 @@ const History = (props) => {
     </Box>
     <Box>
       {data.slice(0,15).map((item,index)=> (
-        <MessageBlock key={index} text={item.content} score={item.frequency} time={item.createdAt} page="history" />
+        <MessageBlock key={index} text={item.content} score={item.frequency} time={index} page="history" />
       ))}
     </Box>
   </div>

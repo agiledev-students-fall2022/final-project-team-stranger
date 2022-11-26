@@ -8,9 +8,10 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const MessageItem = (props) => {
   let {text, score, time, page} = props
+  let special=["first","second","third","fourth", "fifth"]
   let s;
   if(page == "stats") {s = "Shared with " + score + " strangers!"}
-  else if(page == "history") {s = "You received this message on " + time}
+  else if(page == "history") {s = "You received this message on your" + special[Math.floor(time/3)] +"to last refreshment"}
 
   return (
     <div >
@@ -26,7 +27,7 @@ const MessageItem = (props) => {
           <Typography textAlign="left">
             <li>{s}</li>
             <li> So far it has influenced {score} people.</li>
-            <li> Thank you effort for making the world a warmer place!</li>
+            <li> Thanks to effort for making the world a warmer place!</li>
           </Typography>
         </AccordionDetails>
       </Accordion>
