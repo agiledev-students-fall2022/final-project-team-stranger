@@ -64,10 +64,12 @@ const SignUp = (props) => {
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      
       const res = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/signup`, formValues)
       setLoginStatus(true);
       localStorage.setItem("user_token", res.data.token)
+      alert(
+        "Account Created"
+      );
     } catch {
       setLoginStatus(false); 
       setFormValues(initialValues); 
@@ -104,9 +106,6 @@ const SignUp = (props) => {
   if (loginStatus === undefined) {return <div><p>Loading</p></div>}
   else { 
     if(loginStatus){
-      alert(
-        "Account Created"
-      );
       navigate("/sign-in");
     } else
     {
