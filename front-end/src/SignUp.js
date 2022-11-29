@@ -5,7 +5,7 @@ import {
 } from "@mui/material";
 import LogoIcon from "./components/LogoIcon";
 import axios from "axios"; 
-import { Navigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 const initialValues = {
   "email" : "", 
@@ -19,6 +19,7 @@ const SignUp = (props) => {
   const [formValues, setFormValues] = useState(initialValues); 
   const [loginStatus, setLoginStatus] = useState(undefined); 
   const jwtToken = localStorage.getItem("user_token")  
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getLoginStatus() {
@@ -101,7 +102,17 @@ const SignUp = (props) => {
   </Grid>
 
   if (loginStatus === undefined) {return <div><p>Loading</p></div>}
-  else {return loginStatus ? <Navigate to="/sign-in" replace/> : elem}
+  else { 
+    if(loginStatus){
+      alert(
+        "Account Created"
+      );
+      window.location.href="/sign-in"
+    } else
+    {
+      return elem
+    }
+  }
 };
 
 export default SignUp;
