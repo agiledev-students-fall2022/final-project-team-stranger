@@ -107,7 +107,7 @@ const SignUp = (props) => {
       alert(
         "Account Created"
       );
-      window.location.href="/sign-in"
+      navigate("/sign-in");
     } else
     {
       return elem
