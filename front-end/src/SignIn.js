@@ -12,6 +12,7 @@ const initialValues = {
 }
 
 const SignIn = (props) => {
+  localStorage.removeItem("user_token")
   const [formValues, setFormValues] = useState(initialValues);
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -25,6 +26,7 @@ const SignIn = (props) => {
     event.preventDefault();
 
     try {
+      
       const res = await (await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/login`, formValues)).data
       if (!res.success) {
         alert(res.message)

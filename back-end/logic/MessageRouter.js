@@ -185,7 +185,6 @@ messageRouter.post("/messages", async (req, res) => {
               //get highlight
               let lastMessage;
               //no highlight for the first day
-              console.log(data);
               if (data.previousMessages.length == 0) {
                 lastMessage = "No highlights available";
               } else {
