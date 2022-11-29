@@ -63,6 +63,7 @@ const SignUp = (props) => {
   async function handleSubmit(event) {
     event.preventDefault();
     try {
+      
       const res = await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/signup`, formValues)
       setLoginStatus(true);
       localStorage.setItem("user_token", res.data.token)
@@ -100,7 +101,7 @@ const SignUp = (props) => {
   </Grid>
 
   if (loginStatus === undefined) {return <div><p>Loading</p></div>}
-  else {return loginStatus ? <Navigate to="/" replace/> : elem}
+  else {return loginStatus ? <Navigate to="/sign-in" replace/> : elem}
 };
 
 export default SignUp;

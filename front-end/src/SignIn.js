@@ -25,6 +25,7 @@ const SignIn = (props) => {
     event.preventDefault();
 
     try {
+      localStorage.removeItem("user_token")
       const res = await (await axios.post(`${process.env.REACT_APP_BACKEND_API_URL}/login`, formValues)).data
       if (!res.success) {
         alert(res.message)
