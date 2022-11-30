@@ -46,7 +46,7 @@ const Home = (props) => {
     }
     fetchData();
     // refreshment only available when the user refreshes the page
-  }, []);
+  }, [loginStatus]);
 
   const elem = (
     <div>

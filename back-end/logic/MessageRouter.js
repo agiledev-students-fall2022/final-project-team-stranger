@@ -129,32 +129,23 @@ messageRouter.post("/messages", async (req, res) => {
                 );
                 curMessages = strangerMessages.map((msg) => msg._id);
                 //update the daily messages
-                User.findOne({ _id: req.user._id })
-                  .updateOne({
+                User.findOneAndUpdate(
+                  { _id: req.user._id },
+                  {
                     $set: {
                       currentMessages: curMessages,
                     },
-                  })
-                  .exec((err, data) => {
-                    if (err) {
-                      console.log(err);
-                    }
-                  });
+                    $currentDate: {
+                      lastRefreshDate: true,
+                    },
+                  }
+                ).exec((err, data) => {
+                  if (err) {
+                    console.log(err);
+                  }
+                });
               }
             );
-
-            //change the refresh date to current time
-            User.findOne({ _id: req.user._id })
-              .updateOne({
-                $currentDate: {
-                  lastRefreshDate: true,
-                },
-              })
-              .exec((err, data) => {
-                if (err) {
-                  console.log(err);
-                }
-              });
           }
           //else, do nothing
         }
