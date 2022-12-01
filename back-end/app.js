@@ -1,17 +1,11 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-const mongoose = require("mongoose");
 const db = require("./models/db.js");
 const authPassport = require("./logic/authPassport.js");
 const cookieParser = require("cookie-parser");
-
-// Auth
-const jwt = require("jsonwebtoken");
 const passport = require("passport");
-
 const app = express();
-app.use(passport.initialize());
 
 // Env Vars
 const dotenv = require("dotenv");
@@ -20,6 +14,7 @@ dotenv.config({
 });
 
 // Register Auth
+app.use(passport.initialize());
 const { jwtOptions, jwtStrategy } = require("./logic/authPassport");
 passport.use("strangerLogin", jwtStrategy);
 
@@ -40,32 +35,6 @@ app.use(express.urlencoded({ extended: true })); // decode url-encoded incoming 
 app.use(cors({ origin: process.env.FRONT_END_DOMAIN, credentials: true })); // allow incoming requests only from a "trusted" host
 app.use(cookieParser()); // useful middleware for dealing with cookies
 
-// Register Auth/Protected Routes 
-app.use("/", authRouter); 
-
-app.use("/", passport.authenticate("strangerLogin", {
-  session: false, failureRedirect: '/authFail'}), HistoryRouter);
-
-app.use("/", passport.authenticate("strangerLogin", {
-  session: false, failureRedirect: '/authFail'}), messageRouter);
-// Register All Other Routes 
-app.use("/", passport.authenticate("strangerLogin", {
-  session: false, failureRedirect: '/authFail'}), StatsRouter);
-
-app.use("/", passport.authenticate("strangerLogin", {
-  session: false, failureRedirect: '/authFail'}), privateRoutes);
-  
-// Register All Other Routes 
-app.use("/", passport.authenticate("strangerLogin", {
-  session: false, failureRedirect: '/authFail'}), settingsRouter);
-
-app.use("/", passport.authenticate("strangerLogin", {
-  session: false, failureRedirect: '/authFail'}), SidebarRouter);
-
-app.use("/", passport.authenticate("strangerLogin", {
-  session: false, failureRedirect: '/authFail'}), influenceRouter);
-
-
 // Sample Endpoint 
 app.get("/", (req, res) => {
   res.send(`
@@ -74,5 +43,30 @@ app.get("/", (req, res) => {
     Your .env file is currently ${process.env.TEST ? "" : "NOT"} setup properly!
     `);
 });
+
+// Register Auth
+app.use("/", authRouter); 
+
+// Add all other routers 
+app.use("/", passport.authenticate("strangerLogin", {
+  session: false, failureRedirect: "/authFail"}), HistoryRouter);
+
+app.use("/", passport.authenticate("strangerLogin", {
+  session: false, failureRedirect: "/authFail"}), messageRouter);
+
+app.use("/", passport.authenticate("strangerLogin", {
+  session: false, failureRedirect: "/authFail"}), StatsRouter);
+
+app.use("/", passport.authenticate("strangerLogin", {
+  session: false, failureRedirect: "/authFail"}), privateRoutes);
+  
+app.use("/", passport.authenticate("strangerLogin", {
+  session: false, failureRedirect: "/authFail"}), settingsRouter);
+
+app.use("/", passport.authenticate("strangerLogin", {
+  session: false, failureRedirect: "/authFail"}), SidebarRouter);
+
+app.use("/", passport.authenticate("strangerLogin", {
+  session: false, failureRedirect: "/authFail"}), influenceRouter);
 
 module.exports = app;
