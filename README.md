@@ -131,3 +131,18 @@ Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
 - Richard Yang
 
 ### Sprint 4
+
+#### Product Owner
+
+- Harry Zhu
+
+#### Scrum Master
+
+- Lawrence Gu
+
+#### Developers
+
+- Lawrence Gu
+- Rashed Rifat
+- Harry Zhu
+- Richard Yang
