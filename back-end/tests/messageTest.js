@@ -9,7 +9,7 @@ describe("GET request to /messages route", () => {
   it("it should respond with an HTTP 400 or 304 status code and an object in the response body", (done) => {
     chai
       .request(app)
-      .get("/messages")
+      .post("/messages")
       .end((err, res) => {
         res.should.have.status(400); // use should to make BDD-style assertions
         // res.body.should.be.a("object"); // our route sends back an object
@@ -24,7 +24,7 @@ describe("GET request to /summary route", () => {
   it("it should respond with an HTTP 400 or 304 status code and an object in the response body", (done) => {
     chai
       .request(app)
-      .get("/summary")
+      .post("/summary")
       .end((err, res) => {
         res.should.have.status(400); // use should to make BDD-style assertions
         // res.body.should.be.a("object"); // our route sends back an object
