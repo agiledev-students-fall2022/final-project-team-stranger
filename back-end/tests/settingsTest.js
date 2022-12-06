@@ -10,7 +10,6 @@ const mongoose = require("mongoose");
 const db = require("../models/db.js");
 const Message = mongoose.model("Message");
 const User = mongoose.model("User")
-//tests below
 
 
 describe("POST request to /settings/update route without auth", () => {
