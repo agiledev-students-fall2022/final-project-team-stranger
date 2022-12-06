@@ -42,6 +42,7 @@
     "deep-eql": "^4.1.2",
     "default-require-extensions": "^3.0.1",
     "diff": "^5.0.0",
+    "dotenv": "^16.0.3",
     "electron-to-chromium": "^1.4.284",
     "emoji-regex": "^8.0.0",
     "es6-error": "^4.1.1",
