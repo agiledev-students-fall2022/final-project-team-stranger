@@ -163,7 +163,7 @@
     "mocha": "^10.1.0"
   },
   "scripts": {
-    "test": "npx nyc mocha backend/tests/*.js --timeout=3000"
+    "test": "npx nyc mocha back-end/tests/*.js --timeout=3000"
   },
   "repository": {
     "type": "git",
