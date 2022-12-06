@@ -117,6 +117,7 @@
     "p-map": "^3.0.0",
     "p-try": "^2.2.0",
     "package-hash": "^4.0.0",
+    "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "path-exists": "^4.0.0",
     "path-is-absolute": "^1.0.1",
