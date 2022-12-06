@@ -33,7 +33,6 @@ describe("POST request to /send-message/get route with authorization", () => {
             res.should.have.status(200); // use should to make BDD-style assertions
             res.body.should.be.a("object"); // our route sends back an object
             res.body.should.have.property("status", "authenticated user"); //confirm user is authorized
-
             done(); // resolve the Promise that these tests create so mocha can move on
           });
       });
@@ -76,10 +75,13 @@ describe("POST request to /send-message/send route with authorization", () => {
               (err, data) => {
                 if (err) {
                   console.log(err);
+                } else {
+                  console.log("Deleted test message.");
                 }
+                done();
               }
             );
-            done(); // resolve the Promise that these tests create so mocha can move on
+            // resolve the Promise that these tests create so mocha can move on
           });
       });
   });

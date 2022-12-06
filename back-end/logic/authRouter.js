@@ -29,7 +29,7 @@ authRouter.post("/login", (req, res, next) => {
         } else {
             const payload = {_id: data._id, email: data.email}; 
             const token = jwt.sign(payload, jwtOptions.secretOrKey); 
-            res.json({success: true, token: token}); 
+            return res.json({success: true, token: token}); 
             next(null, true); 
         }
     })
@@ -59,7 +59,7 @@ authRouter.post("/signup", (req, res, next) => {
             console.log("User signup success!")
             const payload = {_id: data._id, email: data.email}; 
             const token = jwt.sign(payload, jwtOptions.secretOrKey); 
-            res.json({success: true, token: token}); 
+            return res.json({success: true, token: token}); 
             next(null, true); 
         }
     }); 
