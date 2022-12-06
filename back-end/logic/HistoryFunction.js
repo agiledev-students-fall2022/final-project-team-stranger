@@ -22,6 +22,7 @@ HistoryRouter.post("/history", async(req,res) =>{
             else{
               apiResponse=data[0].previousMessages
               apiResponse.reverse();
+              console.log(apiResponse)
               res.json(apiResponse)
             }
           })
