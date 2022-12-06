@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: Build & Deploy
 
 on:
   push:
@@ -6,22 +6,19 @@ on:
       - readme-edit
 
 jobs:
-  merge_pull_request:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main branch
-        uses: actions/checkout@v2
-
-      - name: Use Node.js
-        uses: actions/setup-node@v1
+      - name: Deploy JS App
+        uses: appleboy/ssh-action@v.0.1.2
         with:
-          node-version: '14.x'
+          host: ${{secrets.SSH_HOST}}
+          username:  ${{secrets.SSH_USERNAME}}
+          key: ${{secrets.DEPLOY_KEY}}
 
-      - name: Install dependencies
-        run: npm ci
 
-      - name: Test application
-        run: npm test
-
-      - name: Build application
-        run: npm run build
+          script:|
+            mkdir test
+            cd test
+            git clone https://github.com/agiledev-students-fall2022/final-project-team-stranger.git
+            echo "Deploy Successful"
