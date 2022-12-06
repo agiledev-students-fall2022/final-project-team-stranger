@@ -5,9 +5,9 @@ name: Frontend CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "RichardYCX-CI" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "RichardYCX-CI" ]
 
 jobs:
   build:
