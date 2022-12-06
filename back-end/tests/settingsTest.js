@@ -5,7 +5,14 @@ const chaiHttp = require("chai-http");
 const should = chai.should();
 chai.use(chaiHttp);
 
-describe("POST request to /status/update route without auth", () => {
+
+const mongoose = require("mongoose");
+const db = require("../models/db.js");
+const Message = mongoose.model("Message");
+const User = mongoose.model("User")
+
+
+describe("POST request to /settings/update route without auth", () => {
   it("it should respond with an HTTP 400 status code and an object in the response body", (done) => {
     chai
       .request(app)
@@ -18,7 +25,7 @@ describe("POST request to /status/update route without auth", () => {
   });
 });
 
-describe("POST request to /status/update route", () => {
+describe("POST request to /settings/update route", () => {
   it("it should respond with an HTTP 200 an object in the response body", (done) => {
     chai
       .request(app)
@@ -35,11 +42,13 @@ describe("POST request to /status/update route", () => {
         chai
           .request(app)
           .post("/settings/update")
+          .send({
+            username: "admin1",
+          })
           .set("Authorization", "JWT " + token)
           .end((err, res) => {
             res.should.have.status(200); // use should to make BDD-style assertions
             res.body.should.be.a("object"); // our route sends back an object
-            res.body.should.have.property("msg", "Done!");
             done(); // resolve the Promise that these tests create so mocha can move on
           });
       });
@@ -80,11 +89,14 @@ describe("POST request to /status/get route", () => {
           .end((err, res) => {
             res.should.have.status(200); // use should to make BDD-style assertions
             res.body.should.be.a("object"); // our route sends back an object
-            res.body.should.have.property("username", "John Smith");
-            res.body.should.have.property("email", "demo@gmail.com");
-            res.body.should.have.property("password", "");
-            res.body.should.have.property("confirmPassword", "");
-            res.body.should.have.property("passwordError", "");
+            res.body.should.have.property("username", "admin1");
+            User.findOneAndUpdate({username:"admin1"}).exec(
+              (err, data) => {
+                if (err) {
+                  console.log(err);
+                }
+              }
+            );
             done(); // resolve the Promise that these tests create so mocha can move on
           });
       });

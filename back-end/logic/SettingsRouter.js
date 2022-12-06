@@ -1,11 +1,10 @@
 const express = require("express");
 const nt = require("./SendRequest.js"); 
-
 const mongoose = require("mongoose"); 
 const UserModel = mongoose.model("User")
-const settingsRouter = express.Router();
+const SettingsRouter = express.Router();
 
-settingsRouter.post("/settings/update", (req, res) => {
+SettingsRouter.post("/settings/update", (req, res) => {
     // Database Interaction Here 
     const newData = {
         "username" : req.body.username.trim(), 
@@ -31,7 +30,7 @@ settingsRouter.post("/settings/update", (req, res) => {
     })
 })
 
-settingsRouter.post("/settings/get", (req, res) => {
+SettingsRouter.post("/settings/get", (req, res) => {
     return res.status(200).json({
         username: req.user.username, 
         email: req.user.email, 
@@ -41,4 +40,4 @@ settingsRouter.post("/settings/get", (req, res) => {
     })
 })
 
-module.exports = settingsRouter; 
+module.exports = SettingsRouter; 
