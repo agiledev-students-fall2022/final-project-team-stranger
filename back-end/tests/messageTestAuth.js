@@ -81,7 +81,6 @@ describe("POST request to /send-message/send route with authorization", () => {
                 done();
               }
             );
-            // resolve the Promise that these tests create so mocha can move on
           });
       });
   });

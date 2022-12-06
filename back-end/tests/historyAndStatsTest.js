@@ -12,7 +12,7 @@ describe("POST method for /history when not logged in", () => {
         .post("/history")
         .end((err, res) => {
             res.should.have.status(400);
-            done()
+            done();
         })
     })
 })
@@ -49,8 +49,7 @@ describe("POST method for /stats when not logged in", () => {
         .post("/stats")
         .end((err, res) => {
             res.should.have.status(400);
-
-            done()
+            done();
         })
     })
 })

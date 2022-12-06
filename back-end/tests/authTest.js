@@ -18,7 +18,7 @@ describe("POST request to /login leading to authFail: no password", () => {
       // send user login details, using admin account as sample
       .send({
         email: "strange@nyu.edu",
-        password: "", //no password provided
+        //password: "", //no password provided
       })
       .end((err, res) => {
         res.should.have.status(401); // use should to make BDD-style assertions
