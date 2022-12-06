@@ -3,7 +3,7 @@ name: Build & Deploy
 on:
   push:
     branches:
-      - readme-edit
+      - master
 
 jobs:
   deploy:

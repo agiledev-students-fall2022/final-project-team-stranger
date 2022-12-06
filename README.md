@@ -58,6 +58,8 @@ Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
   - Execute all tests by running `npm test`
 - To use the database:
   - Replace the DB_CONNECTION_STRING and REACT_APP_AUTH_TOKEN in your `.env` file with the credentials given.
+- Deployment:
+  - Please visit http://68.183.128.157:3000/.
 
 ## Roles
 
