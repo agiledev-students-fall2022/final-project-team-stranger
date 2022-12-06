@@ -71,6 +71,7 @@ describe("POST request to /send-message/send route with authorization", () => {
               "status",
               "New message saved to the database successfully"
             ); //confirm new message is saved to db
+            //delete the test message just sent to the db
             Message.deleteOne({ content: "unit test message" }).exec(
               (err, data) => {
                 if (err) {
