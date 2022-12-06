@@ -58,7 +58,7 @@ messageRouter.post(
         }
       });
 
-      return res.json({
+      return res.status(200).json({
         message: req.body.message, // return the message we just saved
         status: "New message saved to the database successfully",
       });
