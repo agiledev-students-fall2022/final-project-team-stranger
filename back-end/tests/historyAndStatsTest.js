@@ -5,13 +5,13 @@ const chaiHttp = require('chai-http');
 const should = chai.should();
 chai.use(chaiHttp);
 
-describe("GET method for /history", () => {
-    it("Should respond with 200!", done => {
+describe("POST method for /history", () => {
+    it("Should respond with 400!", done => {
         chai
         .request(app)
-        .get("/history")
+        .post("/history")
         .end((err, res) => {
-            res.should.have.status(200);
+            res.should.have.status(400);
 
             done()
         })
