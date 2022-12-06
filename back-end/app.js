@@ -28,7 +28,7 @@ const authRouter = require("./logic/authRouter.js");
 const privateRoutes = require("./logic/privateRoutes.js");
 const HistoryRouter = require("./logic/HistoryFunction.js");
 const StatsRouter = require("./logic/StatsFunction.js");
-const settingsRouter = require("./logic/settingsRouter.js");
+const SettingsRouter = require("./logic/SettingsRouter.js");
 const messageRouter = require("./logic/MessageRouter.js");
 const SidebarRouter = require("./logic/sidebarRouter.js");
 const influenceRouter = require("./logic/influenceRouter.js");
@@ -57,7 +57,7 @@ app.use("/", passport.authenticate("strangerLogin", {
   
 // Register All Other Routes 
 app.use("/", passport.authenticate("strangerLogin", {
-  session: false, failureRedirect: '/authFail'}), settingsRouter);
+  session: false, failureRedirect: '/authFail'}), SettingsRouter);
 
 app.use("/", passport.authenticate("strangerLogin", {
   session: false, failureRedirect: '/authFail'}), SidebarRouter);
