@@ -17,7 +17,7 @@ jobs:
           key: ${{secrets.DEPLOY_KEY}}
 
 
-          script:|
+          script: |
             mkdir test
             cd test
             git clone https://github.com/agiledev-students-fall2022/final-project-team-stranger.git
