@@ -43,7 +43,9 @@ describe("POST request to /settings/update route", () => {
           .request(app)
           .post("/settings/update")
           .send({
-            username: "admin1",
+            username: "admin2",
+            email: "stranger@nyu.edu",
+            password:"admin",
           })
           .set("Authorization", "JWT " + token)
           .end((err, res) => {
@@ -89,8 +91,8 @@ describe("POST request to /status/get route", () => {
           .end((err, res) => {
             res.should.have.status(200); // use should to make BDD-style assertions
             res.body.should.be.a("object"); // our route sends back an object
-            res.body.should.have.property("username", "admin1");
-            User.findOneAndUpdate({username:"admin1"}).exec(
+            res.body.should.have.property("username", "admin2");
+            User.findOneAndUpdate({email:"stranger@nyu.edu"},{username:"admin"}).exec(
               (err, data) => {
                 if (err) {
                   console.log(err);
