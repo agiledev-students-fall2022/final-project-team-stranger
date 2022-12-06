@@ -52,6 +52,7 @@
     "escape-string-regexp": "^4.0.0",
     "esprima": "^4.0.1",
     "express": "^4.18.2",
+    "express-validator": "^6.14.2",
     "fill-range": "^7.0.1",
     "find-cache-dir": "^3.3.2",
     "find-up": "^5.0.0",
