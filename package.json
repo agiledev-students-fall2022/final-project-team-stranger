@@ -34,6 +34,7 @@
     "commondir": "^1.0.1",
     "concat-map": "^0.0.1",
     "convert-source-map": "^1.9.0",
+    "cookie-parser": "^1.4.6",
     "cor": "^0.0.0",
     "cors": "^2.8.5",
     "cross-spawn": "^7.0.3",
