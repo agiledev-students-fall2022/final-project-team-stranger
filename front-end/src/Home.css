@@ -8,13 +8,16 @@
   overflow: hidden;
 }
 
+.title{
+  font-weight: 500;
+}
+
 .action {
   height: 20px;
 }
 
 .info {
   padding: 0;
-  /* margin-left: 70% !important; */
   margin: auto;
 }
 
@@ -26,6 +29,57 @@
   height: 2em;
   text-overflow: ellipsis;
   overflow: hidden !important;
+}
+
+#root
+> div
+> main
+> div
+> div.css-ohwg9z
+> div.css-1f8sh1y
+> div:nth-child(1)
+> div
+> div
+> div
+> div {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+#root
+> div
+> main
+> div
+> div.css-ohwg9z
+> div.css-1f8sh1y
+> div:nth-child(2)
+> div
+> div
+> div
+> div {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+#root
+> div
+> main
+> div
+> div.css-ohwg9z
+> div.css-1f8sh1y
+> div:nth-child(3)
+> div
+> div
+> div
+> div {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 }
 
 @media (max-height: 720px) {
