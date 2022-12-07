@@ -5,9 +5,9 @@ name: Backend CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "Secrets" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "Secrets" ]
 
 jobs:
   build:
@@ -16,6 +16,8 @@ jobs:
     defaults:
       run:
         working-directory: 'back-end'
+    env:
+      DB_CONNECTION_STRING: ${{ secrets.DB_CONNECTION_STRING }}
 
     strategy:
       matrix:
