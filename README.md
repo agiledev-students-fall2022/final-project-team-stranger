@@ -2,6 +2,8 @@
 
 We plan to build a mobile/web application that collects and shares kind words. A user can receive and share one message every day. The message can be a small paragraph, a quote, a simple line, or even a single word.
 
+Start your journey with [Our Website](http://68.183.128.157:3000/). 
+
 ## Product Vision Statement
 
 1. **Stay Anonymous, Stay Kind.**
@@ -58,6 +60,8 @@ Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
   - Execute all tests by running `npm test`
 - To use the database:
   - Replace the DB_CONNECTION_STRING and REACT_APP_AUTH_TOKEN in your `.env` file with the credentials given.
+  
+
 
 ## Roles
 
