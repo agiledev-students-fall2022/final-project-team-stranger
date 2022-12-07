@@ -1,20 +1,152 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=8731463&assignment_repo_type=AssignmentRepo)
-# Project Repository
+# Team Stranger
 
-This repository will be used for team projects.
+We plan to build a mobile/web application that collects and shares kind words. A user can receive and share one message every day. The message can be a small paragraph, a quote, a simple line, or even a single word.
 
-Several sets of instructions are included in this repository. They should each be treated as separate assignments with their own due dates and sets of requirements.
+Start your journey with [Our Website](http://68.183.128.157:3000/). 
 
-1. See the [App Map & Wireframes](instructions-0a-app-map-wireframes.md) and [Prototyping](./instructions-0b-prototyping.md) instructions for the requirements of the initial user experience design of the app.
+## Product Vision Statement
 
-1. Delete the contents of this file and replace with the contents of a proper README.md, as described in the [project setup instructions](./instructions-0c-project-setup.md)
+1. **Stay Anonymous, Stay Kind.**
 
-1. See the [Sprint Planning instructions](instructions-0d-sprint-planning.md) for the requirements of Sprint Planning for each Sprint.
+   Users are always anonymous on our platform. No pressure, no blush.
 
-1. See the [Front-End Development instructions](./instructions-1-front-end.md) for the requirements of the initial Front-End Development.
+2. **Building a mental bridge connecting strangers.**
 
-1. See the [Back-End Development instructions](./instructions-2-back-end.md) for the requirements of the initial Back-End Development.
+   Users might be strangers in real life, but are connected with each other and support one another here through sending kind words.
 
-1. See the [Database Integration instructions](./instructions-3-database.md) for the requirements of integrating a database into the back-end.
+3. **We build what we build.**
 
-1. See the [Deployment instructions](./instructions-4-deployment.md) for the requirements of deploying an app.
+   Aiming at building a compact app avoiding all kinds of trouble and mess.
+
+4. **Warm Others, Warm yourself.**
+
+   Users will see how influential their words become. Achieve happiness and encouragements through cheering others up.
+
+## Team
+
+- Rashed Rifat
+  - [Github](https://github.com/RashedRifat)
+  - [LinkedIn](https://www.linkedin.com/in/rashed-rifat/)
+- Richard Yang
+  - [Github](https://github.com/RichardYCX)
+  - [LinkedIn](https://www.linkedin.com/in/richardyang98/)
+- Tianhao Gu
+  - [Github](https://github.com/L-Gu7)
+  - [LinkedIn](https://www.linkedin.com/in/tianhao-gu-930521223/)
+- Youyu Zhu
+  - [Github](https://github.com/yz6790)
+  - [Linkedin](https://www.linkedin.com/in/youyu-zhu-5b6387222/)
+
+## History
+
+Please consult our [CONTRIBUTING.md](./CONTRIBUTING.md) document.
+
+## Project Build and Run Instructions
+
+- To run the frontend:
+  - Please navigate to `/frontend`
+  - Install all dependencies using `npm install`
+  - Create a file with the name `.env`
+  - Copy the values from `.example.env` into the file you created above, changing the environment variables as necessary.
+  - Run the application using `npm start`
+- To run the backend:
+  - Please navigate to `/backend`
+  - Install all dependencies using `npm install`
+  - Create a file with the name `.env`
+  - Copy the values from `.example.env` into the file you created above, changing the environment variables as necessary.
+  - To run the application, run `npx nodemon server.js`
+- To run the backend tests:
+  - Navigate to `/backend/`
+  - Execute all tests by running `npm test`
+- To use the database:
+  - Replace the DB_CONNECTION_STRING and REACT_APP_AUTH_TOKEN in your `.env` file with the credentials given.
+  
+
+
+## Roles
+
+### Sprint 0
+
+#### Product Owner
+
+- Lawrence
+- Harry
+
+#### Scrum Master
+
+- Rashed
+
+#### Developers
+
+- Lawrence
+- Rashed
+- Richard
+- Harry
+
+### Sprint 1
+
+#### Product Owner
+
+- Youyu
+
+#### Scrum Master
+
+- Richard
+
+#### Developers
+
+- Lawrence
+- Rashed
+- Richard
+- Harry
+
+### Sprint 2
+
+#### Product Owner
+
+- Rashed Rifat
+
+#### Scrum Master
+
+- Lawrence Gu
+
+#### Developers
+
+- Lawrence Gu
+- Rashed Rifat
+- Harry Zhu
+- Richard Yang
+
+### Sprint 3
+
+#### Product Owner
+
+- Richard Yang
+
+#### Scrum Master
+
+- Harry Zhu
+
+#### Developers
+
+- Lawrence Gu
+- Rashed Rifat
+- Harry Zhu
+- Richard Yang
+
+### Sprint 4
+
+#### Product Owner
+
+- Harry Zhu
+
+#### Scrum Master
+
+- Lawrence Gu
+
+#### Developers
+
+- Lawrence Gu
+- Rashed Rifat
+- Harry Zhu
+- Richard Yang

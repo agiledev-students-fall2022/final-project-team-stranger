@@ -1,0 +1,21 @@
+.pageWrapper{
+    padding: 10%;
+    height: 90%;
+    width: 90%;
+}
+
+.signInPage {
+    padding-top: 10px;
+}
+
+.signInForm {
+    padding: 10%;
+}
+
+.signInFormField > * {
+    margin-bottom: 5%;
+}
+
+.logoIcon{
+    font-size: 5rem;
+}

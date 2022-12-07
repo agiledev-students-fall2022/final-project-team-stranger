@@ -1,0 +1,28 @@
+.profile{
+    border-radius: 1px;
+    top: 45px;
+    left: 10%;
+    background-color: "primary";
+}
+
+.slo{
+    padding-left: 100px;
+}
+
+.sort_icon{
+    height: 30px;
+    width: 100px;
+}
+
+.recentMessages {
+    padding-right: 5%;
+}
+
+.historyHeader {
+    padding-bottom: 5%;
+}
+
+.receivedMessagesDiv {
+    text-align: left;
+    margin: 3%;
+}

@@ -1,0 +1,25 @@
+.MuiDrawer-paper {
+  width: 60%;
+  color: #e9ecef;
+  background-color: #495057;
+}
+
+ul.actions {
+  margin-top: 60vh !important;
+}
+
+#profile {
+  margin: 15px;
+}
+
+.circleIcon {
+  fill: #e9ecef;
+}
+
+.logOut {
+  fill: #e9ecef;
+}
+
+.settingIcon {
+  fill: #e9ecef;
+}

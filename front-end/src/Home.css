@@ -1,0 +1,129 @@
+#welcome {
+  margin: 10px auto;
+}
+
+.preview {
+  margin: 20px 30px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.title{
+  font-weight: 500;
+}
+
+.action {
+  height: 20px;
+}
+
+.info {
+  padding: 0;
+  margin: auto;
+}
+
+.content {
+  padding-top: 1.5em !important;
+}
+
+.LastMessage {
+  height: 2em;
+  text-overflow: ellipsis;
+  overflow: hidden !important;
+}
+
+#root
+> div
+> main
+> div
+> div.css-ohwg9z
+> div.css-1f8sh1y
+> div:nth-child(1)
+> div
+> div
+> div
+> div {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+#root
+> div
+> main
+> div
+> div.css-ohwg9z
+> div.css-1f8sh1y
+> div:nth-child(2)
+> div
+> div
+> div
+> div {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+#root
+> div
+> main
+> div
+> div.css-ohwg9z
+> div.css-1f8sh1y
+> div:nth-child(3)
+> div
+> div
+> div
+> div {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+@media (max-height: 720px) {
+  .preview {
+    height: 100px;
+  }
+
+  #root
+    > div
+    > main
+    > div
+    > div.css-ohwg9z
+    > div.css-1f8sh1y
+    > div:nth-child(1)
+    > div
+    > div
+    > div
+    > div {
+    padding-top: 0;
+  }
+  #root
+    > div
+    > main
+    > div
+    > div.css-ohwg9z
+    > div.css-1f8sh1y
+    > div:nth-child(2)
+    > div
+    > div
+    > div
+    > div {
+    padding-top: 0;
+  }
+  #root
+    > div
+    > main
+    > div
+    > div.css-ohwg9z
+    > div.css-1f8sh1y
+    > div:nth-child(3)
+    > div
+    > div
+    > div
+    > div {
+    padding-top: 0;
+  }
+}
