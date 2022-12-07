@@ -8,13 +8,16 @@
   overflow: hidden;
 }
 
+.title{
+  font-weight: 500;
+}
+
 .action {
   height: 20px;
 }
 
 .info {
   padding: 0;
-  /* margin-left: 70% !important; */
   margin: auto;
 }
 

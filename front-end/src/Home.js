@@ -71,7 +71,7 @@ const Home = (props) => {
           </Button>
         </CardActions>
         <CardContent className="content">
-          <Typography color="primary.dark">Your Total Influence</Typography>
+          <Typography color="primary.dark" className="title">Your Total Influence</Typography>
           <Typography color="primary.light">{views}</Typography>
         </CardContent>
       </Card>
@@ -87,7 +87,7 @@ const Home = (props) => {
           </Button>
         </CardActions>
         <CardContent className="content">
-          <Typography color="primary.dark">Previous Highlights </Typography>
+          <Typography color="primary.dark" className="title">Previous Highlights </Typography>
           <Typography noWrap color="primary.light" className="LastMessage">
             {lastMessage}
           </Typography>
