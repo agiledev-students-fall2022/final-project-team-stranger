@@ -5,9 +5,9 @@ name: Backend CI
 
 on:
   push:
-    branches: [ "Secrets" ]
+    branches: [ "RichardYCX-CI" ]
   pull_request:
-    branches: [ "Secrets" ]
+    branches: [ "RichardYCX-CI" ]
 
 jobs:
   build:
