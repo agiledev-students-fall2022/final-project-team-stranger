@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const UserModel = mongoose.model("User");
-const SettingsRouter = express.Router();
+const settingsRouter = express.Router();
 
 settingsRouter.post("/settings/update", (req, res) => {
   // Database Interaction Here
@@ -46,4 +46,4 @@ settingsRouter.post("/settings/get", (req, res) => {
   });
 });
 
-module.exports = SettingsRouter;
+module.exports = settingsRouter;
