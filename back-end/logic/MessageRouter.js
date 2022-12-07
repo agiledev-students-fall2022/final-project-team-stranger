@@ -1,6 +1,4 @@
 const express = require("express");
-const dotenv = require("dotenv");
-const axios = require("axios");
 const mongoose = require("mongoose");
 const db = require("../models/db.js");
 const User = mongoose.model("User");
@@ -127,7 +125,7 @@ messageRouter.post("/messages", async (req, res) => {
                     }
                   })
                 );
-                curMessages = strangerMessages.map((msg) => msg._id);
+                let curMessages = strangerMessages.map((msg) => msg._id);
                 //update the daily messages
                 User.findOneAndUpdate(
                   { _id: req.user._id },
