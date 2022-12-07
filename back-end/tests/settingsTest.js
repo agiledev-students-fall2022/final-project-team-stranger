@@ -5,11 +5,10 @@ const chaiHttp = require("chai-http");
 const should = chai.should();
 chai.use(chaiHttp);
 
-
 const mongoose = require("mongoose");
 const db = require("../models/db.js");
 const Message = mongoose.model("Message");
-const User = mongoose.model("User")
+const User = mongoose.model("User");
 //tests below
 
 describe("POST request to /settings/update route without auth", () => {
@@ -45,7 +44,7 @@ describe("POST request to /settings/update route", () => {
           .send({
             username: "admin2",
             email: "stranger@nyu.edu",
-            password:"admin",
+            password: "admin",
           })
           .set("Authorization", "JWT " + token)
           .end((err, res) => {
@@ -92,13 +91,14 @@ describe("POST request to /status/get route", () => {
             res.should.have.status(200); // use should to make BDD-style assertions
             res.body.should.be.a("object"); // our route sends back an object
             res.body.should.have.property("username", "admin2");
-            User.findOneAndUpdate({email:"stranger@nyu.edu"},{username:"admin"}).exec(
-              (err, data) => {
-                if (err) {
-                  console.log(err);
-                }
+            User.findOneAndUpdate(
+              { email: "stranger@nyu.edu" },
+              { username: "admin" }
+            ).exec((err, data) => {
+              if (err) {
+                console.log(err);
               }
-            );
+            });
             done(); // resolve the Promise that these tests create so mocha can move on
           });
       });

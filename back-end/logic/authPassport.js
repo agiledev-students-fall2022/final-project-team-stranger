@@ -16,9 +16,9 @@ const jwtStrategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
   const UserFinder = mongoose.model("User")
   const user = UserFinder.findOne({"_id" : jwt_payload._id}).exec((err, data) => {
     if (err) {
-        next(null, false)
+      next(null, false)
     } else {
-        next(null, data)
+      next(null, data)
     }
   })
 })
