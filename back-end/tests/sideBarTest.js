@@ -2,6 +2,7 @@ const chai = require("chai");
 const expect = require("chai");
 const app = require("../app.js");
 const chaiHttp = require("chai-http");
+const { default: mongoose } = require("mongoose");
 const should = chai.should();
 chai.use(chaiHttp);
 
@@ -42,6 +43,9 @@ describe("POST request to /sidebar route", () => {
             res.body.should.have.property("username").and.to.be.a("string");
             res.body.should.have.property("joinTime").and.to.be.a("number");
             done(); // resolve the Promise that these tests create so mocha can move on
+            mongoose.connection.close(function () {
+              console.log('Mongoose disconnected on app termination');
+            })
           });
       });
   });
