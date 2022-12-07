@@ -16,6 +16,8 @@ jobs:
     defaults:
       run:
         working-directory: 'front-end'
+    env:
+      REACT_APP_BACKEND_API_URL: ${{secrets.REACT_APP_BACKEND_API_URL}}
 
     strategy:
       matrix:

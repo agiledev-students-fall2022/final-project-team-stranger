@@ -18,6 +18,9 @@ jobs:
         working-directory: 'back-end'
     env:
       DB_CONNECTION_STRING: ${{ secrets.DB_CONNECTION_STRING }}
+      FRONT_END_DOMAIN: ${{ secrets.FRONT_END_DOMAIN}}
+      REACT_APP_AUTH_TOKEN:  ${{ secrets.REACT_APP_AUTH_TOKEN}}
+
 
     strategy:
       matrix:
